@@ -27,7 +27,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="{{url('/')}}">
-        <img src="{{ asset('img/brand/healthhubIconv.png')}}" style="width: auto; height: auto;" class="navbar-brand-img" alt="laboratorioCli">
+        <img src="{{ asset('img/brand/logocootranascol.jpeg')}}" style="width: auto; height: auto;" class="navbar-brand-img" alt="laboratorioCli">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
