@@ -18,9 +18,10 @@
   </div>
 <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link " href="{{ url('/')}}">
-        <i class="far fa-eye text-primary"></i> info
-      </a>
+    <a class="nav-link" href="{{ route('mantenimiento.index') }}">
+  <i class="far fa-eye text-primary"></i> Mantenimiento
+</a>
+
     </li>
     <li class="nav-item">
       <a class="nav-link " href=" {{ url('/')}}">

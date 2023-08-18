@@ -28,6 +28,8 @@
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="{{url('/')}}">
         <img src="{{ asset('img/brand/logocootranascol.jpeg')}}" style="width: auto; height: auto;" class="navbar-brand-img" alt="laboratorioCli">
+        <h6>Navegando con Eficiencia, <br>
+          Calculando con Exactitud</h6>
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -96,9 +98,11 @@
                 <span class="avatar avatar-sm rounded-circle">
                   <img alt="Image placeholder" src="{{ asset('img/theme/fotodeperfil.png')}}">
                 </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name}}</span>
-                </div>
+          <div class="media-body ml-2 d-none d-lg-block">
+          @auth
+              <span class="mb-0 text-sm font-weight-bold">{{ auth()->user()->name }}</span>
+          @endauth
+            </div>
               </div>
             </a>
               @include('includes.panel.userOptions')
