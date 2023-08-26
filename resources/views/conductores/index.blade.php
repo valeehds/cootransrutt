@@ -1,60 +1,58 @@
 @extends('layouts.panel')
 @section('content')
 <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
+    <div class="card-header border-0">
+        <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Mantenimientos</h3>
-              <table class="table">
-                    <tr>
-                        <th>Codigo</th>
-                        <th>Vehiculo</th>
-                        <th>Fecha</th>
-                        <th>Observaciones</th>
-                        <th>Costo Obra</th>
-                        <th>Costo piezas</th>
-                        <th>Total</th>
-                        <th>Comprobante</th>
-                    </tr>
-                    @forelse($mantenimientos as $fila)
-                    <tr>
-                        <td>{{$fila->idMantenimiento}}</td>
-                        <td>{{$fila->idVehiculo}}</td>
-                        <td>{{$fila->fechaMantenimiento}}</td>
-                        <td>{{$fila->observaciones}}</td>
-                        <td>{{$fila->valorManoobra}}</td>
-                        <td>{{$fila->valorPiezas}}</td>
-                        <td>{{$fila->valorTotal}}</td>
-                        <td>{{$fila->fotoFactura}}</td>
-                        
-                    </tr>
-                    @empty
-                    @endforelse
-                </table>
+                <h3 class="mb-0">Mantenimientos</h3>
             </div>
-      <footer class="footer">
-        <div class="row align-items-center justify-content-xl-between">
-          <div class="col-xl-6">
-            <div class="copyright text-center text-xl-left text-muted">
-              &copy; 2023 <a href="#" class="font-weight-bold ml-1">{{ config('app.name')}}</a>
-            </div>
-            <a href="{{route('mantenimiento.create')}}"><button class="btn-agregar">Agregar</button></a>
-            <a href=""><button class="">Editar</button></a>
-            <a href=""><button class="">Eliminar</button></a>
-          </div>
-
-          <div class="col-xl-6">
-            
-            <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-              
-              <li class="nav-item">
-                <a href="#" class="nav-link">¿Quiénes somos?</a>
-              </li>
-            </ul>
-          </div>
         </div>
-        
-      </footer>
     </div>
-  </div>
-  @endsection
+    <div class="table-responsive">
+        <table class="table table-striped align-items-center">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Vehículo</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Observaciones</th>
+                    <th scope="col">Costo Obra</th>
+                    <th scope="col">Costo Piezas</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Comprobante</th>
+                    <th scope="col" class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($mantenimientos as $fila)
+                <tr>
+                    <td>{{$fila->idMantenimiento}}</td>
+                    <td>{{$fila->idVehiculo}}</td>
+                    <td>{{$fila->fechaMantenimiento}}</td>
+                    <td>{{$fila->observaciones}}</td>
+                    <td>{{$fila->valorManoobra}}</td>
+                    <td>{{$fila->valorPiezas}}</td>
+                    <td>{{$fila->valorTotal}}</td>
+                    <td><a href="{{ route('archivo.download', $fila->fotoFactura) }}" target="_blank" class="btn btn-sm btn-primary">Descargar</a></td>
+                    <td class="text-center">
+                        <a href="{{route('mantenimiento.edit',$fila->idMantenimiento)}}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{route('mantenimiento.destroy',$fila->idMantenimiento)}}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                    </td>
+                </tr>
+                @empty
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+    <footer class="footer mt-4">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md-6">
+                <p class="text-muted mb-0">&copy; 2023 <a href="#" class="font-weight-bold">{{ config('app.name')}}</a></p>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a href="{{route('mantenimiento.create')}}" class="btn btn-primary">Agregar Mantenimiento</a>
+            </div>
+        </div>
+    </footer>
+</div>
+@endsection

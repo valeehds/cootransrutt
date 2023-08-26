@@ -55,15 +55,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <form action="{{ route('archivo.upload') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <label for="fotoFactura">Comprobante</label>
-                    <input type="file" class="form-control-file" name="fotoFactura" id="fotoFactura" required>
-                    <div class="invalid-feedback">Por favor seleccione un archivo.</div>
-                    <button class="btn btn-primary mt-3" type="submit">Subir Comprobante</button>
-                </form>
+                <label for="fotoFactura">Comprobante</label>
+                <input type="text" class="form-control" name="fotoFactura" id="fotoFactura" required>
+                <div class="invalid-feedback">Por favor ingrese el comprobante.</div>
             </div>
-            <button class="btn btn-primary mt-3" type="submit">Enviar</button>
+            <button class="btn btn-primary" type="submit">Enviar</button>
         </form>
     </div>
     <div class="card-footer">

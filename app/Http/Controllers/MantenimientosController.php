@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mantenimientos;
 use App\Models\Vehiculos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MantenimientosController extends Controller
 {
@@ -60,8 +61,19 @@ class MantenimientosController extends Controller
         return redirect()->route('mantenimiento.index');
     }
 
-    public function destroy(mantenimientos $mantenimientos)
+    public function destroy($id)
     {
-        // ... código de destroy
+        $mantenimiento = Mantenimientos::findOrFail($id);
+        $mantenimiento->delete();
+        return redirect()->route('mantenimiento.index');
     }
+    
+
 }
+
+
+
+
+
+    
+

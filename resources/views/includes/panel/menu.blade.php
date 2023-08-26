@@ -21,21 +21,22 @@
     <a class="nav-link" href="{{ route('mantenimiento.index') }}">
   <i class="far fa-eye text-primary"></i> Mantenimiento
 </a>
+  </li>
 
-    </li>
     <li class="nav-item">
-      <a class="nav-link " href=" {{ url('/')}}">
-        <i class="far fa-eye text-danger"></i>info
-      </a>
-    </li>
+    <a class="nav-link" href="{{ route('persona.index') }}">
+  <i class="far fa-eye text-primary"></i> Personas
+</a>
+  </li>
+
     <li class="nav-item">
-      <a class="nav-link " href="{{ url('/')}}">
-        <i class="far fa-eye text-info"></i>info
-      </a>
-    </li>
+    <a class="nav-link" href="{{ route('persona.index') }}">
+  <i class="far fa-eye text-primary"></i> Nòminas
+</a>
+  </li>
     <li class="nav-item">
       <a class="nav-link " href=" {{ url('/')}} ">
-        <i class="far fa-eye text-success"></i>info
+        <i class="far fa-eye text-success"></i>Rutas
       </a>
     </li>
   </ul>
