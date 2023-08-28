@@ -48,7 +48,7 @@ class MantenimientosController extends Controller
     {
         $mantenimiento = Mantenimientos::findOrFail($id);
         $mantenimiento->update([
-            'idMantenimiento' => $request['idMantenimiento'],
+           
             'idVehiculo' => $request['idv'],
             'fechaMantenimiento' => $request['fechaMantenimiento'],
             'observaciones' => $request['observaciones'],

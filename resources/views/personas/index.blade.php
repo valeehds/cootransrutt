@@ -40,8 +40,10 @@
                     <td>{{$fila->fechaAfiliacion}}</td>
                     <td>{{$fila->estado}}</td>
                     <td class="text-center">
-                        <a href="" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                    <a href="{{ route('persona.edit', $fila->idPersona) }}" class="btn btn-sm btn-warning">Editar</a>
+
+                    <a href="{{ route('persona.destroy', $fila->idPersona) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+
                     </td>
                 </tr>
                 @empty
@@ -55,6 +57,9 @@
         <div class="col-xl-6">
             <div class="text-center text-xl-left text-muted">
                 &copy; 2023 <a href="#" class="font-weight-bold ml-1">{{ config('app.name')}}</a>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a href="{{route('persona.create')}}" class="btn btn-primary">Agregar Registro</a>
             </div>
         </div>
         <div class="col-xl-6">

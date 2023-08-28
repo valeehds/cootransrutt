@@ -2,92 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\personas;
+use App\Models\Personas;
 use Illuminate\Http\Request;
-
 
 class PersonasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $personas = Personas::orderBy('nombrePersona', 'ASC')->get();
         return view('personas.index', ['personas' => $personas]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
-    {   $personas = Personas::orderBy('nombre', 'ASC')->get();
-        return view('personas.create', ['personas' => $personas]);
+    {
+        return view('personas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         Personas::create([
-            'idPersona' => $request['idPersona'],
-            'cargo' => $request['cargo'],
-            'nombrePersona' => $request['nombrePersona'],
-            'apellidoPersona' => $request['apellidoPersona'],
-            'tipoDoc' => $request['tipoDoc'],
-            'documentoPersona' => $request['documentoPersona'],
-            'numLicencia' => $request['numLicencia'],
-            'fechaNacimiento' => $request['fechaNacimiento'],
-            'fechaAfiliacion' => $request['fechaAfiliacion'],
-            'estado' => $request['estado'],
+            'cargo' => $request->input('cargo'),
+            'nombrePersona' => $request->input('nombrePersona'),
+            'apellidoPersona' => $request->input('apellidoPersona'),
+            'tipoDoc' => $request->input('tipoDoc'),
+            'documentoPersona' => $request->input('documentoPersona'),
+            'numLicencia' => $request->input('numLicencia'),
+            'fechaNacimiento' => $request->input('fechaNacimiento'),
+            'fechaAfiliacion' => $request->input('fechaAfiliacion'),
+            'estado' => $request->input('estado'),
         ]);
         
         return redirect()->route('persona.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(personas $personas)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(personas $personas)
+    public function edit($id)
     {
         $personas = Personas::findOrFail($id);
-        return view('persona.edit', ['personas' => $personas]);
+        return view('personas.edit', ['personas' => $personas]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, personas $personas)
+    public function update(Request $request, $id)
     {
-        $mantenimiento = Mantenimientos::findOrFail($id);
-        $mantenimiento->update([
-            'idPersona' => $request['idPersona'],
-            'cargo' => $request['cargo'],
-            'nombrePersona' => $request['nombrePersona'],
-            'apellidoPersona' => $request['apellidoPersona'],
-            'tipoDoc' => $request['tipoDoc'],
-            'documentoPersona' => $request['documentoPersona'],
-            'numLicencia' => $request['numLicencia'],
-            'fechaNacimiento' => $request['fechaNacimiento'],
-            'fechaAfiliacion' => $request['fechaAfiliacion'],
-            'estado' => $request['estado'],
+        $personas = Personas::findOrFail($id);
+
+        $personas->update([
+            'cargo' => $request->input('cargo'),
+            'nombrePersona' => $request->input('nombrePersona'),
+            'apellidoPersona' => $request->input('apellidoPersona'),
+            'tipoDoc' => $request->input('tipoDoc'),
+            'documentoPersona' => $request->input('documentoPersona'),
+            'numLicencia' => $request->input('numLicencia'),
+            'fechaNacimiento' => $request->input('fechaNacimiento'),
+            'fechaAfiliacion' => $request->input('fechaAfiliacion'),
+            'estado' => $request->input('estado'),
         ]);
         
         return redirect()->route('persona.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $personas = Personas::findOrFail($id);

@@ -27,7 +27,8 @@ route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'in
 route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
 route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
 route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
-route::get('personas/update/{id}',[App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+
 route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS
@@ -41,10 +42,10 @@ route::post('mantenimientos/store',[App\Http\Controllers\MantenimientosControlle
 route::get('mantenimientos/edit/{id}',[App\Http\Controllers\MantenimientosController::class, 'edit'])->name('mantenimiento.edit');
 route::get('mantenimientos/update/{id}',[App\Http\Controllers\MantenimientosController::class, 'update'])->name('mantenimiento.update');
 route::get('mantenimientos/destroy{id}',[App\Http\Controllers\MantenimientosController::class, 'destroy'])->name('mantenimiento.destroy');
-Route::get('/archivo/download/{filename}', [App\Http\Controllers\MantenimientosController::class, 'download'])->name('archivo.download');
-
 Route::post('/archivo/upload',[App\Http\Controllers\MantenimientosController::class, 'upload'])->name('archivo.upload');
 //5. RUTAS
+Route::get('/map', [App\Http\Controllers\RutasController::class, 'showMap'])->name('rutas.index');
+
 
 
 //6. RECORRIDOS
