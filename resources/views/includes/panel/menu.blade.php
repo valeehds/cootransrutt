@@ -18,7 +18,7 @@
   </div>
 <ul class="navbar-nav">
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('mantenimiento.index') }}">
+    <a class="nav-link" href="{{ route('mantenimiento.info') }}">
   <i class="far fa-eye text-primary"></i> Mantenimiento
 </a>
   </li>

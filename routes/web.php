@@ -36,6 +36,10 @@ route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::clas
 //3. VEHICULOS
 
 //4. MANTENIMIENTOS
+Route::get('mantenimiento.info', function () {
+    return view('conductores.vistap');
+})->name('mantenimiento.info');
+
 route::get('mantenimientos/index',[App\Http\Controllers\MantenimientosController::class, 'index'])->name('mantenimiento.index');
 route::get('mantenimientos/create',[App\Http\Controllers\MantenimientosController::class, 'create'])->name('mantenimiento.create');
 route::post('mantenimientos/store',[App\Http\Controllers\MantenimientosController::class, 'store'])->name('mantenimiento.store');

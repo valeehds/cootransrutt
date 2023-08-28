@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class MantenimientosController extends Controller
 {
+    public function info()
+    {
+       
+        return view('conductores.vistap');
+    }
+
     public function index()
     {
         $mantenimientos = Mantenimientos::orderBy('fechaMantenimiento', 'DESC')->get();
