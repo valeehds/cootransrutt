@@ -1,7 +1,7 @@
 @extends('layouts.panel')
 
 @section('content')
-  <!-- Heading -->
+  
   <style>
     .btn{
       font-weight: normal;
@@ -12,16 +12,8 @@
     <a class="nav-link" href="{{ route('persona.index') }}">
   <i class="far fa-eye text-primary"></i> Personas
 </a>
-  </li>
 
-    <li class="nav-item">
-    <a class="nav-link" href="{{ route('persona.index') }}">
-  <i class="far fa-eye text-primary"></i> Nòminas
 </a>
-  </li>
-    <li class="nav-item">
-      <a class="nav-link " href=" {{ route('rutas.index') }}">
-        <i class="far fa-eye text-success"></i>Rutas
       </a>
     </li>
   </ul>

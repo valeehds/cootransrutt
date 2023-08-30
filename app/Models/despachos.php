@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class rutas extends Model
+class despachos extends Model
 {
     use HasFactory;
-    protected $fillable=['idRuta','idDespacho','tiempoEstimado','valorTiquete'];
-    protected $primaryKey='idRuta';
+    protected $fillable['idDespacho','nombre','direccion'];
+    protected $primaryKey='idDespacho';
 }

@@ -30,13 +30,19 @@
   </li>
 
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('persona.index') }}">
+    <a class="nav-link" href="{{ route('nomina.index') }}">
   <i class="far fa-eye text-primary"></i> Nòminas
 </a>
   </li>
     <li class="nav-item">
       <a class="nav-link " href=" {{ route('rutas.index') }}">
         <i class="far fa-eye text-success"></i>Rutas
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="">
+        <i class="far fa-eye text-success"></i> Despachos
       </a>
     </li>
   </ul>

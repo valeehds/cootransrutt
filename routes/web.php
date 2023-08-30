@@ -32,13 +32,12 @@ Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::cla
 route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS
+route::get('nomina/index',[App\Http\Controllers\NominasController::class, 'index'])->name('nomina.index');
 
 //3. VEHICULOS
 
 //4. MANTENIMIENTOS
-Route::get('mantenimiento.info', function () {
-    return view('conductores.vistap');
-})->name('mantenimiento.info');
+Route::get('mantenimiento.info', function () {return view('conductores.vistap');})->name('mantenimiento.info');
 
 route::get('mantenimientos/index',[App\Http\Controllers\MantenimientosController::class, 'index'])->name('mantenimiento.index');
 route::get('mantenimientos/create',[App\Http\Controllers\MantenimientosController::class, 'create'])->name('mantenimiento.create');
