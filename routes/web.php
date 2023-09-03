@@ -49,7 +49,8 @@ route::post('mantenimientos/store',[App\Http\Controllers\MantenimientosControlle
 route::get('mantenimientos/edit/{id}',[App\Http\Controllers\MantenimientosController::class, 'edit'])->name('mantenimiento.edit');
 route::get('mantenimientos/update/{id}',[App\Http\Controllers\MantenimientosController::class, 'update'])->name('mantenimiento.update');
 route::get('mantenimientos/destroy{id}',[App\Http\Controllers\MantenimientosController::class, 'destroy'])->name('mantenimiento.destroy');
-Route::post('/archivo/upload',[App\Http\Controllers\MantenimientosController::class, 'upload'])->name('archivo.upload');
+/* Route::get('mantenimientos/download/{id}', 'MantenimientosController@download')->name('mantenimientos.download'); */
+
 //5. RUTAS
 Route::get('/map', [App\Http\Controllers\RutasController::class, 'showMap'])->name('rutas.index');
 

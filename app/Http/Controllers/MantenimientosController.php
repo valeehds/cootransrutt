@@ -28,7 +28,11 @@ class MantenimientosController extends Controller
     }
 
     public function store(Request $request)
-    {
+     {
+        $request->validate([
+            'fotoFactura' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+    
         Mantenimientos::create([
             'idMantenimiento' => $request['idMantenimiento'],
             'idVehiculo' => $request['idv'],
@@ -37,8 +41,14 @@ class MantenimientosController extends Controller
             'valorManoobra' => $request['valorManoobra'],
             'valorPiezas' => $request['valorPiezas'],
             'valorTotal' => $request['valorTotal'],
-            'fotoFactura' => $request['fotoFactura'],
         ]);
+
+        if ($request->hasFile('fotoFactura')) {
+            $imagePath = $request->file('fotoFactura')->store('mantenimientos');
+            $mantenimiento->update([
+                'fotoFactura' => $imagePath,
+            ]);
+        }
 
         return redirect()->route('mantenimiento.index');
     }
@@ -72,6 +82,27 @@ class MantenimientosController extends Controller
         $mantenimiento = Mantenimientos::findOrFail($id);
         $mantenimiento->delete();
         return redirect()->route('mantenimiento.index');
+    }
+
+    // Método para subir y guardar una imagen
+    public function download($id)
+    {
+        $mantenimiento = Mantenimientos::findOrFail($id);
+    
+        $imagePath = $mantenimiento->fotoFactura;
+    
+        if (Storage::exists($imagePath)) {
+            $file = Storage::get($imagePath);
+            $contentType = Storage::mimeType($imagePath);
+    
+            $headers = [
+                'Content-Type' => $contentType,
+            ];
+    
+            return response($file, 200)->withHeaders($headers);
+        } else {
+            return abort(404); // Archivo no encontrado
+        }
     }
     
 

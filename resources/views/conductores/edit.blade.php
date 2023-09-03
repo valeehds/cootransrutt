@@ -35,20 +35,25 @@
                 <label for="observaciones">Observaciones</label>
                 <input type="text" class="form-control" name="observaciones" id="observaciones" value="{{ $mantenimiento->observaciones }}">
             </div>
-
-            <div class="form-group">
-                <label for="valorManoobra">Costo Obra</label>
-                <input type="text" class="form-control" name="valorManoobra" id="valorManoobra" value="{{ $mantenimiento->valorManoobra }}">
-            </div>
-
-            <div class="form-group">
-                <label for="valorPiezas">Costo Piezas</label>
-                <input type="text" class="form-control" name="valorPiezas" id="valorPiezas" value="{{ $mantenimiento->valorPiezas }}">
-            </div>
-
-            <div class="form-group">
-                <label for="valorTotal">Total</label>
-                <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="{{ $mantenimiento->valorTotal }}">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="valorManoobra">Costo Obra</label>
+                        <input type="text" class="form-control" name="valorManoobra" id="valorManoobra" value="{{ $mantenimiento->valorManoobra }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="valorPiezas">Costo Piezas</label>
+                        <input type="text" class="form-control" name="valorPiezas" id="valorPiezas" value="{{ $mantenimiento->valorPiezas }}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="valorTotal">Total</label>
+                        <input type="text" class="form-control" name="valorTotal" id="valorTotal" value="{{ $mantenimiento->valorTotal }}">
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">

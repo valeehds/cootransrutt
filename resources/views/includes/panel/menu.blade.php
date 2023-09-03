@@ -11,6 +11,11 @@
   <i class="far fa-eye text-primary"></i> Mantenimientos
 </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('vehiculos.index') }}">
+  <i class="far fa-eye text-primary"></i> Vehículos
+</a>
+  </li>
 
     <li class="nav-item">
     <a class="nav-link" href="{{ route('personas.index')}}">
@@ -35,21 +40,10 @@
       </a>
     </li>
   </ul>
-  <li class="nav-item">
-      <a class="nav-link " href="{{ route('vehiculos.index') }}">
-        <i class="far fa-eye text-success"></i> Vehiculos
-      </a>
-    </li>
-  </ul>
   <!-- Divider -->
   <hr class="my-3">
   <!-- Heading -->
   <h6 class="navbar-heading text-muted">Panel exámenes</h6>
   <!-- Navigation -->
-  <ul class="navbar-nav mb-md-3">
-    <li class="nav-item">
-      <a class="nav-link" href="{{url('/')}}">
-        <i class=" far fa-eye	text-warning"></i>info
-      </a>
-    </li>
-  </ul>
+ 
+    
