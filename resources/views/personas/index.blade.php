@@ -60,9 +60,6 @@
         </table>
     </div>
 </div>
-<div class="text-md-left">
-    <a href="{{route('personas.create')}}" class="btn btn-sm btn-primary">Agregar Registro</a>
-</div>
 <footer class="footer">
     <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
