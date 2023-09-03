@@ -27,7 +27,8 @@ route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'in
 route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
 route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
 route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
-Route::get('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+
 route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS

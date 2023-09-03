@@ -9,7 +9,7 @@
     {{ config('app.name')}}
   </title>
   <!-- Favicon -->
-  <link href="{{ asset('img\brand\logoMedicalSalud(2).png')}}" rel="icon" type="image/png">
+  <link href="http://localhost/cootransrut/public/img/brand/logocootranascol.jpeg" rel="icon" type="image/png">
   <!-- Fonts -->
   <!-- Icons -->
   <link href=" {{ asset('js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />

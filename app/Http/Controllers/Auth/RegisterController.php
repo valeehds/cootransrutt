@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -51,8 +52,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'apellido' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:2', 'confirmed'],
         ]);
     }
 
@@ -62,12 +64,53 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+     public function register(Request $request)
+     {
+         $validator = $this->validator($request->all());
+     
+         if ($validator->fails()) {
+             return redirect()->back()
+                 ->withErrors($validator)
+                 ->withInput();
+         }
+     
+         $user = $this->create($request->all());
+     
+         if ($request->input('rol') === 'Conductores') {
+             return view('formulario2'); // Ruta completa de la vista para Conductores
+         } else {
+             return view('formulario1'); // Ruta completa de la vista para otros roles
+         }
+     }
+     
+
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
+            'apellido' => $data['apellido'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
+            'rol' => $data['rol'],
         ]);
     }
+
+    public function infoAdicionalGerencia(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($user->rol === 'Gerencia') {
+            $user->tipoDoc = $request->input('tipoDoc');
+            $user->documento = $request->input('documento');
+            $user->fechaNacimiento = $request->input('fechaNacimiento');
+            $user->save();
+
+            return redirect('/home');
+        } else {
+            return redirect('/error');
+        }
+    }
+
+
 }

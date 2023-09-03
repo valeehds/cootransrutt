@@ -36,7 +36,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #58E173; 
+            background-color: white; 
         }
 
         .login-form {
@@ -105,58 +105,55 @@
         .restablecimiento a{
         }
         img {
-          height: 30%;
-          width: 30%
+          height: 20%;
+          width: 20%
         }
 
     </style>
 </head>
 <body>
     <div id="map-container">
-        <!-- Aquí puedes agregar el mapa de Google Maps -->
-        <!-- Por ejemplo: -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.2881769278138!2d-73.36409022631605!3d5.524191033971437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7dd053b09533%3A0x579688d814c54a12!2sCootranscol%20Tunja!5e0!3m2!1ses!2sco!4v1693700944795!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <!-- Reemplazar la ubicación del mapa con una imagen -->
+        <img src="img\brand\buses.webp" alt="Imagen" style="width: 100%; height: 100%;">
     </div>
     <div id="login-container">
-
         <div class="login-form">
-        <div class="text-center mb-4">
-            <!-- Cabecera con el logotipo de la empresa -->
-            <h1>COOTRANSRUT</h1>
-            <img src="http://localhost/cootransrut/public/img/brand/logocootranascol.jpeg" alt="Logo de la empresa" width="200">
-        </div>
-            <form role="form" method="POST" action="{{ route('login') }}">
-            @csrf
-            <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                      </div>
-                      <input class="form-control" placeholder="Correo electrónico" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+          <div class="text-center mb-4">
+              <!-- Cabecera con el logotipo de la empresa -->
+              <h1>COOTRANSRUT
+                <img src="http://localhost/cootransrut/public/img/brand/logocootranascol.jpeg" alt="Logo de la empresa" width="200">
+              </h1>
+          </div>
+            <form method="POST" action="">
+                @csrf
+                <!-- Tu formulario aquí -->
+                <div class="form-group">
+                    <div class="input-group input-group-alternative mb-3">
+                        <select id="tipoDoc" name="tipoDoc" class="form-control" autofocus required>
+                            <option value="">Tipo de documento</option>
+                            <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                            <option value="Cédula de extranjería">Cédula de extranjería</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                            <option value="Número de identificación tributaria">Número de identificación tributaria</option>
+                        </select>
                     </div>
-                  </div>
-                  <div class="form-group mb-3">
-                    <div class="input-group-alternative">
-                      <input class="form-control" placeholder="Contraseña" type="password" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
-                    </div>
-                  </div>
-
-                  <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input name="remember" class="custom-control-input" id="remember_token" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                    <label class="custom-control-label" for="remember_token">
-                        <span class="text-muted">Recordarme</span>
-                    </label>
                 </div>
-                
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-danger btn-lg btn-block my-4">Empezar</button>
-                  </div>
+
+                <div class="form-group">
+                    <input type="text" name="documento" id="documento" class="form-control" placeholder="Número de documento" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Fecha de nacimiento</label>
+                    <input type="date" name="fechaNacimiento" id="fechaNacimiento" max="{{ \Carbon\Carbon::now()->subYears(18)->format('Y-m-d') }}" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="numLicencia" id="numLicencia" placeholder="Licencia" required>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg btn-block my-4">Siguiente</button>
             </form>
-            <div class=""> 
-                <a class="restablecimiento" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a> 
-                <br>
-                <a class="register" href="{{ route('register') }}">Crear nueva cuenta</a>
-            </div>
         </div>
     </div>
 </body>
