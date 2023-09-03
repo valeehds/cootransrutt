@@ -23,13 +23,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //1. PERSONAS
-route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('persona.index');
-route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
-route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
-route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
-Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('personas.index');
+route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('personas.create');
+route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('personas.store');
+route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('personas.edit');
+Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('personas.update');
 
-route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
+route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('personas.destroy');
 
 //2.NÓMINAS
 route::get('nomina/index',[App\Http\Controllers\NominasController::class, 'index'])->name('nomina.index');
