@@ -27,13 +27,16 @@ route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'in
 route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
 route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
 route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
-Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
-
+Route::get('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
 route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS
 route::get('nomina/index',[App\Http\Controllers\NominasController::class, 'index'])->name('nomina.index');
-
+route::get('nomina/create',[App\Http\Controllers\NominasController::class, 'create'])->name('nomina.create');
+route::post('nomina/store',[App\Http\Controllers\NominasController::class, 'store'])->name('nomina.store');
+route::get('nomina/edit/{id}',[App\Http\Controllers\NominasController::class, 'edit'])->name('nomina.edit');
+Route::get('nomina/update/{id}', [App\Http\Controllers\NominasController::class, 'update'])->name('nomina.update');
+route::get('nomina/destroy{id}',[App\Http\Controllers\NominasController::class, 'destroy'])->name('nomina.destroy');
 //3. VEHICULOS
 
 //4. MANTENIMIENTOS
@@ -54,5 +57,10 @@ Route::get('/map', [App\Http\Controllers\RutasController::class, 'showMap'])->na
 //6. RECORRIDOS
 
 //7. ROTACIONES
+Route::get('/rec', [App\Http\Controllers\RotacionesController::class, 'index'])->name('rotacion.index');
+Route::get('/rutas/{id}', [App\Http\Controllers\RotacionesController::class, 'rutas'])->name('rotacion.persona');
+
 
 //8. DESPACHOS
+Route::get('/des', [App\Http\Controllers\DespachosController::class, 'index'])->name('despachos.index');
+Route::get('/rutas/{id}', [App\Http\Controllers\DespachosController::class, 'rutas'])->name('despachos.rutas');

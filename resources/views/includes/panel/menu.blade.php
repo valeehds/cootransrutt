@@ -5,20 +5,10 @@
     }
   </style>
   <h6 font-family: Arial, sans-serif; class="navbar-heading text-muted">Panel Usuarios</h6>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownRoles" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Selecciona un rol
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownRoles">
-      <a class="dropdown-item" href="#">Administrador</a>
-      <a class="dropdown-item" href="#">Usuario Normal</a>
-      <a class="dropdown-item" href="#">Invitado</a>
-      <!-- Agrega más roles según tus necesidades -->
-    </div>
-  </div>
+ 
 <ul class="navbar-nav">
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('mantenimiento.info') }}">
+    <a class="nav-link" href="{{ route('mantenimiento.index') }}">
   <i class="far fa-eye text-primary"></i> Mantenimiento
 </a>
   </li>
@@ -35,13 +25,13 @@
 </a>
   </li>
     <li class="nav-item">
-      <a class="nav-link " href=" {{ route('rutas.index') }}">
-        <i class="far fa-eye text-success"></i>Rutas
+      <a class="nav-link " href=" {{ route('rotacion.index') }}">
+        <i class="far fa-eye text-success"></i>Rotaciones
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="">
+      <a class="nav-link " href="{{ route('despachos.index') }}">
         <i class="far fa-eye text-success"></i> Despachos
       </a>
     </li>

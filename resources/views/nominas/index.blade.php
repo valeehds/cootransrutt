@@ -29,19 +29,24 @@
                 @forelse($nominas as $fila)
                 <tr>
                     <td>{{$fila->idNomina}}</td>
-                    <td>{{$fila->idPersona}}</td>
+                    <td>@php
+                    $personas = App\Models\personas::find($fila->idPersona); 
+                    if ($personas) {
+                        echo $personas->nombrePersona;
+                    }
+                    @endphp</td>
                     <td>{{$fila->horasTrabajadas}}</td>
                     <td>{{$fila->horasExtras}}</td>
                     <td>{{$fila->fechaInicio}}</td>
-                    <td>{{$fila-valorHorastrabajadas}}</td>
-                    <td>{{$fila->valorHorasextras}}</td>
+                    <td>{{$fila->fechaFin}}</td>
+                    <td>{{$fila->valorHorastrabajadas}}</td>
                     <td>{{$fila->valorHorasextras}}</td>
                     <td>{{$fila->porcentaje}}</td>
                     <td>{{$fila->totalPago}}</td>
                 
                     <td class="text-center">
-                        <a href="" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                        <a href="{{ route('nomina.edit', $fila->idNomina) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ route('nomina.destroy', $fila->idNomina) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
                     </td>
                 </tr>
                 @empty
@@ -55,7 +60,7 @@
                 <p class="text-muted mb-0">&copy; 2023 <a href="#" class="font-weight-bold">{{ config('app.name')}}</a></p>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="" class="btn btn-primary">Agregar Mantenimiento</a>
+                <a href="{{route('nomina.create')}}" class="btn btn-primary">Agregar registro de Nomina</a>
             </div>
         </div>
     </footer>

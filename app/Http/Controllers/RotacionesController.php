@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\recorridos;
+use App\Models\rotaciones;
 use Illuminate\Http\Request;
 
-class RecorridosController extends Controller
+class RotacionesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $recorridos = Recorridos::orderBy('fechaAsignacion','ASC')->get();
-        return view('recorridos.index',['recorridos'=>$recorridos]);
+        $rotaciones = Rotaciones::orderBy('fechaAsignacion','ASC')->get();
+        return view('rotaciones.index',['rotaciones'=>$rotaciones]);
     }
     public function persona($id)
     {
         $personas = Personas::orderBy('nombrePersona','ASC')->where('idRotacion','=',$id)->get();
         $vehiculos = Vehiculos::orderBy('idVehiculo','ASC')->where('idRotacion','=',$id)->get();
-        return view('recorridos.personas', ['personas' => $personas, 'vehiculos' => $vehiculos]);
+        return view('rotaciones.personas', ['personas' => $personas, 'vehiculos' => $vehiculos]);
     }
     
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,7 +43,7 @@ class RecorridosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(recorridos $recorridos)
+    public function show(rotaciones $rotaciones)
     {
         //
     }
@@ -50,7 +51,7 @@ class RecorridosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(recorridos $recorridos)
+    public function edit(rotaciones $rotaciones)
     {
         //
     }
@@ -58,7 +59,7 @@ class RecorridosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, recorridos $recorridos)
+    public function update(Request $request, rotaciones $rotaciones)
     {
         //
     }
@@ -66,7 +67,7 @@ class RecorridosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(recorridos $recorridos)
+    public function destroy(rotaciones $rotaciones)
     {
         //
     }

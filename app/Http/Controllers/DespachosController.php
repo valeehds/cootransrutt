@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\despachos;
+use App\Models\rutas;
+use App\Models\recorridos;
 use Illuminate\Http\Request;
 
 class DespachosController extends Controller
@@ -12,16 +14,24 @@ class DespachosController extends Controller
      */
     public function index()
     {
-        $despachos = Despachos::orderBy('fechaMantenimie', 'DESC')->get();
-        return view('conductores.index', ['mantenimientos' => $mantenimientos]);
+        $despachos = Despachos::orderBy('nombre','ASC')->get();
+        return view('despachos.index',['despachos'=>$despachos]);
     }
+   
 
     /**
      * Show the form for creating a new resource.
      */
+    public function rutas($id)
+    {
+        $rutas = Rutas::orderBy('tiempoEstimado','ASC')->where('idDespacho','=',$id)->get();
+        $rut = $rutas[0]->idRuta;
+        $recorridos = Recorridos::orderBy('numPasajeros','ASC')->where('idRuta','=',$rut)->get();
+        return view('despachos.rutas',['rutas'=>$rutas,'recorridos'=>$recorridos]);
+    }
     public function create()
     {
-        //
+        
     }
 
     /**

@@ -14,25 +14,27 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Código</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Direccion</th>
-                    <th scope="col" class="text-center">Acciones</th>
+                    <th scope="col">Inicia</th>
+                    <th scope="col">Finaliza</th>
+                    <th scope="col" class="text-center" colspan="3">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($despachos as $fila)
+                @forelse($rotaciones as $fila)
                 <tr>
-                    <td>{{$fila->idDespacho}}</td>
-                    <td>{{$fila->nombre}}</td>
-                    <td>{{$fila->direccion}}</td>
+                    <td>{{$fila->idRotacion}}</td>
+                    <td>{{$fila->fechaAsignacion}}</td>
+                    <td>{{$fila->fechaFinasignacion}}</td>
                     <td class="text-center">
-                    <a href="{{ route('despachos.rutas', ['id' => $fila->idDespacho]) }}"class="btn btn-sm btn-warning">Ver Rutas Y Recorridos</a>
-                    <a href="" class="btn btn-sm btn-warning">Editar</a>
-                    <a href="" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
-
+                        <a href="{{ route('rotaciones.personas', ['id' => $fila->idRotacion]) }}" class="btn btn-sm btn-warning">Ver Vehiculo y Conductor</a>
+                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
                     </td>
                 </tr>
                 @empty
+                    <tr>
+                        <td colspan="4" class="text-center">No hay registros disponibles</td>
+                    </tr>
                 @endforelse
             </tbody>
         </table>
@@ -44,9 +46,6 @@
             <div class="text-center text-xl-left text-muted">
                 &copy; 2023 <a href="#" class="font-weight-bold ml-1">{{ config('app.name')}}</a>
             </div>
-            <div class="col-md-6 text-md-right">
-                <a href="{{route('persona.create')}}" class="btn btn-primary">Agregar Registro</a>
-            </div>
         </div>
         <div class="col-xl-6">
             <ul class="nav justify-content-center justify-content-xl-end">
@@ -57,10 +56,4 @@
         </div>
     </div>
 </footer>
-
-
-
-
 @endsection
-
-
