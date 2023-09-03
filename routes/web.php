@@ -22,14 +22,24 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-//1. PERSONAS
-route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('persona.index');
-route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
-route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
-route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
-Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+//1. Usuario 
+//FORMULARIOS
+Route::middleware(['auth'])->group(function () {
+    Route::get('/conductores/formulario', 'conductoresController@formulario');
+    Route::get('/gerencia/formulario', 'gerenciaController@formulario');
+    Route::get('/propietarios/formulario', 'propietariosController@formulario');
+    Route::get('/secretaria/formulario', 'secretariaController@formulario');
+    Route::get('/talentohumano/formulario', 'talentohumanoController@formulario');
+    Route::get('/tesoreria/formulario', 'tesoreriaController@formulario');
+});
+//métodos
+route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('personas.index');
+route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('personas.create');
+route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('personas.store');
+Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('personas.update');
+Route::get('personas/edit/{id}', [App\Http\Controllers\PersonasController::class, 'edit'])->name('personas.edit');
+Route::delete('personas/destroy/{id}', [App\Http\Controllers\PersonasController::class, 'destroy'])->name('personas.destroy');
 
-route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS
 route::get('nomina/index',[App\Http\Controllers\NominasController::class, 'index'])->name('nomina.index');

@@ -9,7 +9,7 @@
   </style>
   <h6  class="navbar-heading text-muted">Panel Usuarios</h6>
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('persona.index') }}">
+    <a class="nav-link" href="">
   <i class="far fa-eye text-primary"></i> Personas
 </a>
 

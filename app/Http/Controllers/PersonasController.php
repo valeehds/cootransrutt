@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Personas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PersonasController extends Controller
 {
     public function index()
     {
-        $personas = Personas::orderBy('nombrePersona', 'ASC')->get();
+        $personas = User::orderBy('name', 'ASC')->get();
         return view('personas.index', ['personas' => $personas]);
     }
 
@@ -21,15 +21,16 @@ class PersonasController extends Controller
     public function store(Request $request)
     {
         Personas::create([
-            'cargo' => $request->input('cargo'),
-            'nombrePersona' => $request->input('nombrePersona'),
-            'apellidoPersona' => $request->input('apellidoPersona'),
+            'rol' => $request->input('rol'),
+            'name' => $request->input('name'),
+            'apellido' => $request->input('apellido'),
             'tipoDoc' => $request->input('tipoDoc'),
-            'documentoPersona' => $request->input('documentoPersona'),
+            'documento' => $request->input('documento'),
             'numLicencia' => $request->input('numLicencia'),
             'fechaNacimiento' => $request->input('fechaNacimiento'),
             'fechaAfiliacion' => $request->input('fechaAfiliacion'),
             'estado' => $request->input('estado'),
+            'email' => $request->input('email')
         ]);
         
         return redirect()->route('persona.index');
@@ -37,33 +38,34 @@ class PersonasController extends Controller
 
     public function edit($id)
     {
-        $personas = Personas::findOrFail($id);
+        $personas = User::findOrFail($id);
         return view('personas.edit', ['personas' => $personas]);
     }
 
     public function update(Request $request, $id)
     {
-        $personas = Personas::findOrFail($id);
+        $personas = User::findOrFail($id);
 
         $personas->update([
-            'cargo' => $request->input('cargo'),
-            'nombrePersona' => $request->input('nombrePersona'),
-            'apellidoPersona' => $request->input('apellidoPersona'),
+            'rol' => $request->input('rol'),
+            'name' => $request->input('name'),
+            'apellido' => $request->input('apellido'),
             'tipoDoc' => $request->input('tipoDoc'),
-            'documentoPersona' => $request->input('documentoPersona'),
+            'documento' => $request->input('documento'),
             'numLicencia' => $request->input('numLicencia'),
             'fechaNacimiento' => $request->input('fechaNacimiento'),
             'fechaAfiliacion' => $request->input('fechaAfiliacion'),
             'estado' => $request->input('estado'),
+            'email' => $request->input('email')
         ]);
         
-        return redirect()->route('persona.index');
+        return redirect()->route('personas.index');
     }
 
     public function destroy($id)
     {
-        $personas = Personas::findOrFail($id);
+        $personas = User::findOrFail($id);
         $personas->delete();
-        return redirect()->route('persona.index');
+        return redirect()->route('personas.index');
     }
 }

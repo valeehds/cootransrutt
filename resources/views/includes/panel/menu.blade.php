@@ -5,17 +5,6 @@
     }
   </style>
   <h6 font-family: Arial, sans-serif; class="navbar-heading text-muted">Panel Usuarios</h6>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownRoles" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Selecciona un rol
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownRoles">
-      <a class="dropdown-item" href="#">Administrador</a>
-      <a class="dropdown-item" href="#">Usuario Normal</a>
-      <a class="dropdown-item" href="#">Invitado</a>
-      <!-- Agrega más roles según tus necesidades -->
-    </div>
-  </div>
 <ul class="navbar-nav">
     <li class="nav-item">
     <a class="nav-link" href="{{ route('mantenimiento.info') }}">
@@ -24,7 +13,7 @@
   </li>
 
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('persona.index') }}">
+    <a class="nav-link" href="{{ route('personas.index')}}">
   <i class="far fa-eye text-primary"></i> Personas
 </a>
   </li>
