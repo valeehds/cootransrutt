@@ -5,7 +5,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Personas</h3>
+                <h3 class="mb-0">Despachos</h3>
             </div>
         </div>
     </div>
@@ -43,9 +43,6 @@
         <div class="col-xl-6">
             <div class="text-center text-xl-left text-muted">
                 &copy; 2023 <a href="#" class="font-weight-bold ml-1">{{ config('app.name')}}</a>
-            </div>
-            <div class="col-md-6 text-md-right">
-                <a href="{{route('personas.create')}}" class="btn btn-primary">Agregar Registro</a>
             </div>
         </div>
         <div class="col-xl-6">

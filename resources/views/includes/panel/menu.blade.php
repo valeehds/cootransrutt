@@ -8,7 +8,7 @@
 <ul class="navbar-nav">
     <li class="nav-item">
     <a class="nav-link" href="{{ route('mantenimiento.index') }}">
-  <i class="far fa-eye text-primary"></i> Mantenimiento
+  <i class="far fa-eye text-primary"></i> Mantenimientos
 </a>
   </li>
 
@@ -20,7 +20,7 @@
 
     <li class="nav-item">
     <a class="nav-link" href="{{ route('nomina.index') }}">
-  <i class="far fa-eye text-primary"></i> Nòminas
+  <i class="far fa-eye text-primary"></i> Nóminas
 </a>
   </li>
     <li class="nav-item">

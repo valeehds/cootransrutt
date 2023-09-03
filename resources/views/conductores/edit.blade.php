@@ -56,7 +56,7 @@
                 <input type="text" class="form-control" name="fotoFactura" id="fotoFactura" value="{{ $mantenimiento->fotoFactura }}">
             </div>
 
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-sm btn-primary">Actualizar</button>
         </form>
     </div>
 </div>
