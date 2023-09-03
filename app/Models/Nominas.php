@@ -9,6 +9,6 @@ class Nominas extends Model
 {
     use HasFactory;
     protected $fillable= ['idNomina','idUsuario','horasTrabajadas','horasExtras','fechaInicio','fechaFin','valorHorastrabajadas',
-    'valorHorasextras','porcentaje','totalPago'];
+    'valorHorasextras','porcenta','totalPago'];
     protected $primaryKey='idNomina';
 }

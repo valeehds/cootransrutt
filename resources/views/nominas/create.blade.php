@@ -12,11 +12,11 @@
         <form action="{{ route('nomina.store') }}" method="POST" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
-                <label for="idv">Persona</label>
-                <select class="form-control" name="idv" id="idv" required>
-                    <option value="" disabled selected>Seleccione una Persona</option>
+                <label for="idUsuario">Persona</label>
+                <select class="form-control" name="idUsuario" id="idUsuario" required>
+                    <option value="" disabled selected>Seleccione una persona</option>
                     @foreach ($personas as $per)
-                        <option value="{{ $per->idPersona }}">{{ $per->nombrePersona }}</option>
+                        <option value="{{ $per->id }}">{{ $per->name }}{{ $per->apellido }}</option>
                     @endforeach
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una Persona.</div>
@@ -62,8 +62,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="porcentaje">Porcentaje</label>
-                        <input type="text" class="form-control" name="porcentaje" id="porcentaje" required>
+                        <label for="porcenta">Porcentaje</label>
+                        <input type="text" class="form-control" name="porcenta" id="porcenta" required>
                         <div class="invalid-feedback">Por favor ingrese el porcentaje de descuento.</div>
                     </div>
                 </div>

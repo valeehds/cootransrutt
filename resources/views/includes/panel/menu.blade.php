@@ -35,6 +35,12 @@
       </a>
     </li>
   </ul>
+  <li class="nav-item">
+      <a class="nav-link " href="{{ route('vehiculos.index') }}">
+        <i class="far fa-eye text-success"></i> Vehiculos
+      </a>
+    </li>
+  </ul>
   <!-- Divider -->
   <hr class="my-3">
   <!-- Heading -->

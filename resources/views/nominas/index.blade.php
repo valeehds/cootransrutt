@@ -33,9 +33,9 @@
                 <tr>
                     <td>{{$fila->idNomina}}</td>
                     <td>@php
-                    $personas = App\Models\personas::find($fila->idPersona); 
+                    $personas = App\Models\user::find($fila->idUsuario); 
                     if ($personas) {
-                        echo $personas->nombrePersona;
+                        echo $personas->name . ' '. $personas->name ;
                     }
                     @endphp</td>
                     <td>{{$fila->horasTrabajadas}}</td>
@@ -44,7 +44,7 @@
                     <td>{{$fila->fechaFin}}</td>
                     <td>{{$fila->valorHorastrabajadas}}</td>
                     <td>{{$fila->valorHorasextras}}</td>
-                    <td>{{$fila->porcentaje}}</td>
+                    <td>{{$fila->porcenta}}</td>
                     <td>{{$fila->totalPago}}</td>
                 
                     <td class="text-center">

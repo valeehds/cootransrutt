@@ -54,7 +54,6 @@ Route::post('/archivo/upload',[App\Http\Controllers\MantenimientosController::cl
 Route::get('/map', [App\Http\Controllers\RutasController::class, 'showMap'])->name('rutas.index');
 
 
-
 //6. RECORRIDOS
 
 //7. ROTACIONES
@@ -65,3 +64,11 @@ Route::get('/rutas/{id}', [App\Http\Controllers\RotacionesController::class, 'ru
 //8. DESPACHOS
 Route::get('/des', [App\Http\Controllers\DespachosController::class, 'index'])->name('despachos.index');
 Route::get('/rutas/{id}', [App\Http\Controllers\DespachosController::class, 'rutas'])->name('despachos.rutas');
+
+//9. VEHICULOS
+Route::get('/vehiculos/index', [App\Http\Controllers\VehiculoController::class, 'index'])->name('vehiculos.index');
+route::get('vehiculos/create',[App\Http\Controllers\VehiculoController::class, 'create'])->name('vehiculos.create');
+route::post('vehiculos/store',[App\Http\Controllers\VehiculoController::class, 'store'])->name('vehiculos.store');
+route::get('vehiculos/edit/{id}',[App\Http\Controllers\VehiculoController::class, 'edit'])->name('vehiculos.edit');
+Route::get('vehiculos/update/{id}', [App\Http\Controllers\VehiculoController::class, 'update'])->name('vehiculos.update');
+route::get('vehiculos/destroy{id}',[App\Http\Controllers\VehiculoController::class, 'destroy'])->name('vehiculos.destroy');
