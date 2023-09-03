@@ -10,4 +10,5 @@ class rotaciones extends Model
     use HasFactory;
     protected $fillable=['idRotacion','idVehiculo','idPersona','fechaAsignacion','fechaFinasignacion'];
     protected $primaryKey=['idRotacion'];
+
 }

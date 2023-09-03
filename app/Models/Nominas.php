@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nominas extends Model
 {
     use HasFactory;
-    protected $fillable= ['idNomina','idPersona','horasTrabajadas','horasExtras','fechaInicio','fechaFin','valorHorastrabajadas',
+    protected $fillable= ['idNomina','idUsuario','horasTrabajadas','horasExtras','fechaInicio','fechaFin','valorHorastrabajadas',
     'valorHorasextras','porcentaje','totalPago'];
     protected $primaryKey='idNomina';
 }
