@@ -21,7 +21,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 //1. PERSONAS
 route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('personas.index');
 route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('personas.create');
@@ -52,7 +51,7 @@ route::get('mantenimientos/destroy{id}',[App\Http\Controllers\MantenimientosCont
 /* Route::get('mantenimientos/download/{id}', 'MantenimientosController@download')->name('mantenimientos.download'); */
 
 //5. RUTAS
-Route::get('/map', [App\Http\Controllers\RutasController::class, 'showMap'])->name('rutas.index');
+Route::get('/index', [App\Http\Controllers\RutasController::class, 'index'])->name('rutas.index');
 
 
 //6. RECORRIDOS
