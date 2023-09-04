@@ -45,7 +45,7 @@
                 &copy; 2023 <a href="#" class="font-weight-bold ml-1">{{ config('app.name')}}</a>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{route('despacho.create')}}" class="btn btn-primary">Agregar Registro</a>
+                <a href="{{route('persona.create')}}" class="btn btn-primary">Agregar Registro</a>
             </div>
         </div>
         <div class="col-xl-6">
@@ -57,9 +57,6 @@
         </div>
     </div>
 </footer>
-
-
-
 
 @endsection
 

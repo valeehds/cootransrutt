@@ -21,15 +21,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 //1. PERSONAS
-route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('persona.index');
-route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
-route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
-route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
-Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
+route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('personas.index');
+route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('personas.create');
+route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('personas.store');
+route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('personas.edit');
+Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('personas.update');
 
-route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
+route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('personas.destroy');
 
 //2.NÓMINAS
 route::get('nomina/index',[App\Http\Controllers\NominasController::class, 'index'])->name('nomina.index');
@@ -49,10 +48,10 @@ route::post('mantenimientos/store',[App\Http\Controllers\MantenimientosControlle
 route::get('mantenimientos/edit/{id}',[App\Http\Controllers\MantenimientosController::class, 'edit'])->name('mantenimiento.edit');
 route::get('mantenimientos/update/{id}',[App\Http\Controllers\MantenimientosController::class, 'update'])->name('mantenimiento.update');
 route::get('mantenimientos/destroy{id}',[App\Http\Controllers\MantenimientosController::class, 'destroy'])->name('mantenimiento.destroy');
-Route::post('/archivo/upload',[App\Http\Controllers\MantenimientosController::class, 'upload'])->name('archivo.upload');
-//5. RUTAS
-Route::get('/map', [App\Http\Controllers\RutasController::class, 'showMap'])->name('rutas.index');
+/* Route::get('mantenimientos/download/{id}', 'MantenimientosController@download')->name('mantenimientos.download'); */
 
+//5. RUTAS
+Route::get('/index', [App\Http\Controllers\RutasController::class, 'index'])->name('rutas.index');
 
 
 //6. RECORRIDOS
@@ -70,3 +69,11 @@ route::post('despachos/store',[App\Http\Controllers\DespachosController::class, 
 route::get('despachos/edit/{id}',[App\Http\Controllers\DespachosController::class, 'edit'])->name('despacho.edit');
 route::get('despachos/update/{id}',[App\Http\Controllers\DespachosController::class, 'update'])->name('despacho.update');
 route::get('despachos/destroy{id}',[App\Http\Controllers\DespachosController::class, 'destroy'])->name('despacho.destroy');
+
+//9. VEHICULOS
+Route::get('/vehiculos/index', [App\Http\Controllers\VehiculoController::class, 'index'])->name('vehiculos.index');
+route::get('vehiculos/create',[App\Http\Controllers\VehiculoController::class, 'create'])->name('vehiculos.create');
+route::post('vehiculos/store',[App\Http\Controllers\VehiculoController::class, 'store'])->name('vehiculos.store');
+route::get('vehiculos/edit/{id}',[App\Http\Controllers\VehiculoController::class, 'edit'])->name('vehiculos.edit');
+Route::get('vehiculos/update/{id}', [App\Http\Controllers\VehiculoController::class, 'update'])->name('vehiculos.update');
+route::get('vehiculos/destroy{id}',[App\Http\Controllers\VehiculoController::class, 'destroy'])->name('vehiculos.destroy');

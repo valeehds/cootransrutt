@@ -4,7 +4,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Actualizar Registro Nòminas</h3>
+                <h3 class="mb-0">Actualizar Registro Nóminas</h3>
             </div>
         </div>
     </div>
@@ -13,11 +13,11 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="idv">Persona</label>
-                <select class="form-control" name="idv" id="idv" required>
-                    <option value="" disabled>Seleccione una Persona</option>
+                <label for="id">Persona</label>
+                <select class="form-control" name="idUsuario" id="idUsuario" required>
+                    <option value="" disabled>Seleccione una persona</option>
                     @foreach ($personas as $persona)
-                        <option value="{{ $persona->idPersona }}" @if($persona->idPersona === $nominas->idPersona) selected @endif>{{ $persona->nombrePersona }}</option>
+                        <option value="{{ $persona->id }}" @if($persona->id === $nominas->id) selected @endif>{{ $persona->name }}{{ $per->apellido }}</option>
                     @endforeach
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una Persona.</div>
@@ -54,8 +54,8 @@
             </div>
 
             <div class="form-group">
-                <label for="porcentaje">Porcentaje</label>
-                <input type="text" name="porcentaje" id="porcentaje" class="form-control" value="{{ $nominas->porcentaje}}">
+                <label for="porcenta">Porcentaje</label>
+                <input type="text" name="porcenta" id="porcenta" class="form-control" value="{{ $nominas->porcenta}}">
             </div>
 
             <div class="form-group">

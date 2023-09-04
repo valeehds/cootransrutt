@@ -4,7 +4,10 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Nòminas</h3>
+                <h3 class="mb-0">Nóminas</h3>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <a href="{{route('nomina.create')}}" class="btn btn-sm btn-primary">Agregar registro de Nomina</a>
             </div>
         </div>
     </div>
@@ -30,9 +33,9 @@
                 <tr>
                     <td>{{$fila->idNomina}}</td>
                     <td>@php
-                    $personas = App\Models\personas::find($fila->idPersona); 
+                    $personas = App\Models\user::find($fila->idUsuario); 
                     if ($personas) {
-                        echo $personas->nombrePersona;
+                        echo $personas->name . ' '. $personas->name ;
                     }
                     @endphp</td>
                     <td>{{$fila->horasTrabajadas}}</td>
@@ -41,7 +44,7 @@
                     <td>{{$fila->fechaFin}}</td>
                     <td>{{$fila->valorHorastrabajadas}}</td>
                     <td>{{$fila->valorHorasextras}}</td>
-                    <td>{{$fila->porcentaje}}</td>
+                    <td>{{$fila->porcenta}}</td>
                     <td>{{$fila->totalPago}}</td>
                 
                     <td class="text-center">
@@ -54,15 +57,12 @@
             </tbody>
         </table>
     </div>
-    <footer class="footer mt-4">
+</div>
+<footer class="footer mt-4">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-6">
                 <p class="text-muted mb-0">&copy; 2023 <a href="#" class="font-weight-bold">{{ config('app.name')}}</a></p>
             </div>
-            <div class="col-md-6 text-md-right">
-                <a href="{{route('nomina.create')}}" class="btn btn-primary">Agregar registro de Nomina</a>
-            </div>
         </div>
     </footer>
-</div>
 @endsection

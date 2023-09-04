@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nominas;
-use App\Models\Personas;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NominasController extends Controller
@@ -22,7 +22,7 @@ class NominasController extends Controller
      */
     public function create()
     {
-        $personas = Personas::orderBy('nombrePersona', 'ASC')->get();
+        $personas = User::orderBy('name', 'ASC')->get();
         return view('nominas.create', ['personas' => $personas]);
     }
 
@@ -32,15 +32,15 @@ class NominasController extends Controller
     public function store(Request $request)
     {
         Nominas::create([
-            'idPersona' => $request->input('idv'),
+            'idUsuario' => $request->input('idUsuario'),
             'horasTrabajadas' => $request->input('horasTrabajadas'),
             'horasExtras' => $request->input('horasExtras'),
             'fechaInicio' => $request->input('fechaInicio'),
             'fechaFin' => $request->input('fechaFin'),
             'valorHorastrabajadas' => $request->input('valorHorastrabajadas'),
             'valorHorasextras' => $request->input('valorHorasextras'),
-            'porcentaje' => $request->input('porcentaje'),
-            'totalPago' => $request->input('totalPago'),
+            'porcenta' => $request->input('porcenta'),
+            'totalPago' => $request->input('totalPago')
         ]);
 
         return redirect()->route('nomina.index');
@@ -52,7 +52,7 @@ class NominasController extends Controller
     public function edit($id)
     {
         $nominas = Nominas::findOrFail($id);
-        $personas = Personas::orderBy('nombrePersona', 'ASC')->get();
+        $personas = User::orderBy('name', 'ASC')->get();
         return view('nominas.edit', ['nominas' => $nominas, 'personas' => $personas]);
     }
 
@@ -63,7 +63,7 @@ class NominasController extends Controller
     {
         $nominas = Nominas::findOrFail($id);
         $nominas->update([
-            'idPersona' => $request->input('idv'),
+            'id' => $request->input('id'),
             'horasTrabajadas' => $request->input('horasTrabajadas'),
             'horasExtras' => $request->input('horasExtras'),
             'fechaInicio' => $request->input('fechaInicio'),
