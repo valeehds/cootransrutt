@@ -9,19 +9,19 @@
         </div>
     </div>
     <div class="card-body">
-             <form action="{{ route('rutas.update', $rutas->idRuta) }}" method="PUT">
+             <form action="{{ route('ruta.update', $rutas->idRuta) }}" method="PUT">
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="idDespacho">Despacho</label>
-                <select class="form-control" name="idDespacho" id="idDespacho" required>
-                    <option value="" disabled>Seleccione un despacho</option>
-                    @foreach ($despachos as $des)
-                        <option value="{{ $des->idDespacho }}" @if($des->id === $despachos->idDespacho) selected @endif>{{ $des->nombre }}</option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback">Por favor seleccione un despacho.</div>
-            </div>
+    <label for="idDespacho">Despacho</label>
+    <select class="form-control" name="idDespacho" id="idDespacho" required>
+        <option value="" disabled>Seleccione un despacho</option>
+        @foreach ($despachos as $des)
+            <option value="{{ $des->idDespacho }}" @if($des->idDespacho === $rutas->idDespacho) selected @endif>{{ $des->nombre }}</option>
+        @endforeach
+    </select>
+    <div class="invalid-feedback">Por favor seleccione un despacho.</div>
+</div>
 
             <div class="form-group">
                 <label for="tiempoEstimado">Tiempo estimado</label>

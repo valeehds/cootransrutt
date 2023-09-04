@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="card-body">
-             <form action="{{ route('recorridos.update', $recorridos->idRecorrido) }}" method="PUT">
+             <form action="{{ route('recorrido.update', $recorridos->idRecorrido) }}" method="PUT">
             @csrf
             @method('PUT')
             <div class="form-group">
@@ -41,12 +41,12 @@
 
             <div class="form-group">
                 <label for="fechaHoraInicio">Fecha/Hora Inicio</label>
-                <input type="text" name="fechaHoraInicio" id="fechaHoraInicio" class="form-control" value="{{ $recorridos->fechaHoraInicio}}">
+                <input type="datetime" name="fechaHoraInicio" id="fechaHoraInicio" class="form-control" value="{{ $recorridos->fechaHoraInicio}}">
             </div>
 
             <div class="form-group">
                 <label for="fechaHoraFin">Fecha/Hora fin</label>
-                <input type="text" name="fechaHoraFin" id="fechaHoraFin" class="form-control" value="{{ $recorridos->fechaHoraFin}}">
+                <input type="datetime" name="fechaHoraFin" id="fechaHoraFin" class="form-control" value="{{ $recorridos->fechaHoraFin}}">
             </div>
 
             <button type="submit" class="btn btn-primary">Actualizar</button>

@@ -4,7 +4,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Agregar Registro de Recorridos</h3>
+                <h3 class="mb-0">Agregar Registro de Rotaciones</h3>
             </div>
         </div>
     </div>
@@ -15,39 +15,35 @@
             <label for="idRuta">Ruta</label>
             <select class="form-control" name="idRuta" id="idRuta" required>
                 <option value="" disabled selected>Seleccione una ruta</option>
-                @foreach ($rutas as $ruta)
-                    <option value="{{ $ruta->idRuta }}">{{ $ruta->tiempoEstimado }}</option>
+                @foreach ($vehiculos as $veh)
+                    <option value="{{ $vehiculos->idVehiculo}}">{{ $vehiculos->numPlaca}}</option>
                 @endforeach
             </select>
-            <div class="invalid-feedback">Por favor seleccione una ruta.</div>
+            <div class="invalid-feedback">Por favor seleccione un Vehiculo.</div>
         </div>
 
         <div class="form-group">
             <label for="idRotacion">Rotación</label>
             <select class="form-control" name="idRotacion" id="idRotacion" required>
                 <option value="" disabled selected>Seleccione una rotación</option>
-                @foreach ($rotaciones as $rotacion)
-                    <option value="{{ $rotacion->idRotacion }}">{{ $rotacion->fechaAsignacion }} {{ $rotacion->fechaFinasignacion }}</option>
+                @foreach ($personas as $per)
+                    <option value="{{ $personas->id }}">{{ $personas->name}} {{ $personas->name}}</option>
                 @endforeach
             </select>
-            <div class="invalid-feedback">Por favor seleccione una rotación.</div>
+            <div class="invalid-feedback">Por favor seleccione una persona.</div>
         </div>
 
             <div class="form-group">
-                <label for="numPasajeros">Cant. Pasajeros</label>
-                <input type="text" class="form-control" name="numPasajeros" id="numPasajeros" required>
-                <div class="invalid-feedback">Por favor ingrese el número de pasajeros.</div>
+                <label for="fechaAsignacion">Cant. Pasajeros</label>
+                <input type="text" class="form-control" name="fechaAsignacion" id="fechaAsignacion" required>
+                <div class="invalid-feedback">Por favor ingrese la fecha de incio.</div>
             </div>
             <div class="form-group">
-                <label for="fechaHoraInicio">Fecha/hora Inicio</label>
-                <input type="text" class="form-control" name="fechaHoraInicio" id="fechaHoraInicio" required>
-                <div class="invalid-feedback">Por favor ingrese la fecha de asignación.</div>
+                <label for="fechaFinasignacion">Fecha/hora Inicio</label>
+                <input type="text" class="form-control" name="fechaFinasignacion" id="fechaFinasignacion" required>
+                <div class="invalid-feedback">Por favor ingrese la fecha fin.</div>
             </div>
-            <div class="form-group">
-                <label for="fechaHoraFin">Fecha/hora fin</label>
-                <input type="text" class="form-control" name="fechaHoraFin" id="fechaHoraFin" required>
-                <div class="invalid-feedback">Por favor ingrese la fecha fin de asignación.</div>
-            </div>
+
             <button class="btn btn-primary mt-3" type="submit">Enviar</button>
         </form>
     </div>

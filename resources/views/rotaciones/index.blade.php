@@ -7,6 +7,9 @@
             <div class="col">
                 <h3 class="mb-0">Rotaciones</h3>
             </div>
+            <div class="col-md-6 text-md-right">
+                <a href="{{route('rotacion.create')}}" class="btn btn-sm btn-primary">Agregar registro de Rotaciòn</a>
+            </div>
         </div>
     </div>
     <div class="table-responsive">
