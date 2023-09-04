@@ -24,7 +24,7 @@
   </li>
 
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('personas.index')}}">
+    <a class="nav-link" href="{{ route('persona.index')}}">
   <i class="far fa-eye text-primary"></i> Personas
 </a>
   </li>
@@ -41,7 +41,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link " href="{{ route('despachos.index') }}">
+      <a class="nav-link " href="{{ route('despacho.index') }}">
         <i class="far fa-eye text-success"></i> Despachos
       </a>
     </li>

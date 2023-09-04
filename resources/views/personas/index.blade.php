@@ -46,8 +46,8 @@
                     <td>{{$fila->fechaAfiliacion}}</td>
                     <td>{{$fila->estado}}</td>
                     <td class="text-center">
-                        <a href="{{ route('personas.edit', $fila->id) }}" class="btn btn-sm btn-warning">Editar</a>
-                        <form action="{{ route('personas.destroy', $fila->id) }}" method="POST" class="d-inline">
+                        <a href="{{ route('persona.edit', $fila->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <form action="{{ route('persona.destroy', $fila->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</button>

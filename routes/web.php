@@ -63,5 +63,10 @@ Route::get('/rutas/{id}', [App\Http\Controllers\RotacionesController::class, 'ru
 
 
 //8. DESPACHOS
-Route::get('/des', [App\Http\Controllers\DespachosController::class, 'index'])->name('despachos.index');
-Route::get('/rutas/{id}', [App\Http\Controllers\DespachosController::class, 'rutas'])->name('despachos.rutas');
+Route::get('/des', [App\Http\Controllers\DespachosController::class, 'index'])->name('despacho.index');
+Route::get('/rutas/{id}', [App\Http\Controllers\DespachosController::class, 'rutas'])->name('despacho.rutas');
+route::get('despachos/create',[App\Http\Controllers\DespachosController::class, 'create'])->name('despacho.create');
+route::post('despachos/store',[App\Http\Controllers\DespachosController::class, 'store'])->name('despacho.store');
+route::get('despachos/edit/{id}',[App\Http\Controllers\DespachosController::class, 'edit'])->name('despacho.edit');
+route::get('despachos/update/{id}',[App\Http\Controllers\DespachosController::class, 'update'])->name('despacho.update');
+route::get('despachos/destroy{id}',[App\Http\Controllers\DespachosController::class, 'destroy'])->name('despacho.destroy');

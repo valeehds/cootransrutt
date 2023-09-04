@@ -5,7 +5,7 @@
     <div class="card-header border-0">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="mb-0">Personas</h3>
+                <h3 class="mb-0">Despachos</h3>
             </div>
         </div>
     </div>
@@ -26,9 +26,9 @@
                     <td>{{$fila->nombre}}</td>
                     <td>{{$fila->direccion}}</td>
                     <td class="text-center">
-                    <a href="{{ route('despachos.rutas', ['id' => $fila->idDespacho]) }}"class="btn btn-sm btn-warning">Ver Rutas Y Recorridos</a>
-                    <a href="" class="btn btn-sm btn-warning">Editar</a>
-                    <a href="" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                    <a href="{{ route('despacho.rutas', ['id' => $fila->idDespacho]) }}"class="btn btn-sm btn-warning">Ver Rutas Y Recorridos</a>
+                    <a href="{{route('despacho.edit',$fila->idDespacho)}}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{{route('despacho.destroy',$fila->idDespacho)}}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
 
                     </td>
                 </tr>
@@ -45,7 +45,7 @@
                 &copy; 2023 <a href="#" class="font-weight-bold ml-1">{{ config('app.name')}}</a>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{route('persona.create')}}" class="btn btn-primary">Agregar Registro</a>
+                <a href="{{route('despacho.create')}}" class="btn btn-primary">Agregar Registro</a>
             </div>
         </div>
         <div class="col-xl-6">
