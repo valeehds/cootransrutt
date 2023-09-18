@@ -8,7 +8,7 @@
                 <h3 class="mb-0">Rotaciones</h3>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{route('rotacion.create')}}" class="btn btn-sm btn-primary">Agregar registro de Rotaciòn</a>
+                <a href="{{route('rotacion.create')}}" class="btn btn-sm btn-primary">Agregar registro de vehículos</a>
             </div>
         </div>
     </div>
@@ -17,27 +17,29 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Código</th>
-                    <th scope="col">Inicia</th>
-                    <th scope="col">Finaliza</th>
-                    <th scope="col" class="text-center" colspan="3">Acciones</th>
+                    <th scope="col">Vehiculo</th>
+                    <th scope="col">Incio</th>
+                    <th scope="col">Fin</th>
+                    <th scope="col" class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @forelse($rotaciones as $fila)
+                @forelse($personas as $fila)
                 <tr>
-                    <td>{{$fila->idRotacion}}</td>
+                    <td>{{$fila->idVehiculo}}</td>
+                    <td>{{$fila->name}} {{$fila->apellido}}</td>
                     <td>{{$fila->fechaAsignacion}}</td>
                     <td>{{$fila->fechaFinasignacion}}</td>
                     <td class="text-center">
-                        <a href="{{ route('rotaciones.personas', ['id' => $fila->idRotacion]) }}" class="btn btn-sm btn-warning">Ver Vehiculo y Conductor</a>
-                        <a href="#" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="#" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                        <a href="" class="btn btn-sm btn-warning">Editar</a>
+                        <form action="" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 @empty
-                    <tr>
-                        <td colspan="4" class="text-center">No hay registros disponibles</td>
-                    </tr>
                 @endforelse
             </tbody>
         </table>

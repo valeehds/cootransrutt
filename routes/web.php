@@ -22,12 +22,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //1. PERSONAS
-route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('persona.index');
+route::get('personas/index',[App\Http\Controllers\PersonasController::class, 'index'])->name('personas.index');
 route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'create'])->name('persona.create');
-route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('personas.store');
+route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
 route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
 Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
-
 route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS
@@ -65,13 +64,13 @@ route::get('recorridos/update/{id}',[App\Http\Controllers\RecorridosController::
 route::get('recorridos/destroy{id}',[App\Http\Controllers\RecorridosController::class, 'destroy'])->name('recorrido.destroy');
 
 //7. ROTACIONES
-Route::get('/rec', [App\Http\Controllers\RotacionesController::class, 'index'])->name('rotacion.index');
+Route::get('rotaciones/index', [App\Http\Controllers\RotacionesController::class, 'index'])->name('rotacion.index');
 Route::get('/rutas/{id}', [App\Http\Controllers\RotacionesController::class, 'rutas'])->name('rotacion.persona');
 route::get('rotaciones/create',[App\Http\Controllers\RotacionesController::class, 'create'])->name('rotacion.create');
 route::post('rotaciones/store',[App\Http\Controllers\RotacionesController::class, 'store'])->name('rotacion.store');
 route::get('rotaciones/edit/{id}',[App\Http\Controllers\RotacionesController::class, 'edit'])->name('rotacion.edit');
 route::get('rotaciones/update/{id}',[App\Http\Controllers\RotacionesController::class, 'update'])->name('rotacion.update');
-route::get('rotaciones/destroy{id}',[App\Http\Controllers\RotacionesController::class, 'destroy'])->name('rotacion.destroy');
+route::get('rotaciones/destroy/{id}',[App\Http\Controllers\RotacionesController::class, 'destroy'])->name('rotacion.destroy');
 
 
 

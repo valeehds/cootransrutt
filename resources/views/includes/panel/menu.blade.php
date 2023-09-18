@@ -18,7 +18,7 @@
   </li>
 
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('persona.index')}}">
+    <a class="nav-link" href="{{ route('personas.index')}}">
   <i class="far fa-eye text-primary"></i> Personas
 </a>
   </li>
