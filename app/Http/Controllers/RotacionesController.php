@@ -12,8 +12,8 @@ class RotacionesController extends Controller
      */
     public function index()
     {
-        $rotaciones = Rotaciones::all();
-        return view('rotaciones.index', compact('rotaciones'));
+        $rotaciones = Rotaciones::orderBy('fechaAsignacion', 'ASC')->get();
+        return view('rotaciones.index', ['rotaciones' => $rotaciones]);
     }
 
     /**

@@ -7,7 +7,7 @@
                 <h3 class="mb-0">Vehículos</h3>
             </div>
             <div class="col-md-6 text-md-right">
-                <a href="{{route('vehiculos.create')}}" class="btn btn-sm btn-primary">Agregar registro de vehículos</a>
+                <a href="{{route('vehiculo.create')}}" class="btn btn-sm btn-primary">Agregar registro de vehículos</a>
             </div>
         </div>
     </div>
@@ -43,8 +43,8 @@
                     <td>{{$fila->codigoUt}}</td>
                     <td>{{$fila->estado}}</td>
                     <td class="text-center">
-                        <a href="{{ route('vehiculos.edit', $fila->idVehiculo) }}" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="{{ route('vehiculos.destroy', $fila->idVehiculo) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                        <a href="{{ route('vehiculo.edit', $fila->idVehiculo) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ route('vehiculo.destroy', $fila->idVehiculo) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
                     </td>
                 </tr>
                 @empty

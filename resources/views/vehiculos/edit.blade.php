@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{ route('vehiculos.update', $vehiculo->idVehiculo) }}" method="PUT">
+        <form action="{{ route('vehiculo.update', $vehiculo->idVehiculo) }}" method="PUT">
             @csrf
             @method('PUT')
             

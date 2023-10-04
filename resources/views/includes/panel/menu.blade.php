@@ -12,13 +12,13 @@
 </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{ route('vehiculos.index') }}">
+    <a class="nav-link" href="{{ route('vehiculo.index') }}">
   <i class="far fa-eye text-primary"></i> Vehículos
 </a>
   </li>
 
     <li class="nav-item">
-    <a class="nav-link" href="{{ route('personas.index')}}">
+    <a class="nav-link" href="{{ route('persona.index')}}">
   <i class="far fa-eye text-primary"></i> Personas
 </a>
   </li>
@@ -37,6 +37,12 @@
     <li class="nav-item">
       <a class="nav-link " href="{{ route('despacho.index') }}">
         <i class="far fa-eye text-success"></i> Despachos
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link " href="{{ route('ruta.index') }}">
+        <i class="far fa-eye text-success"></i> Rutas
       </a>
     </li>
   </ul>

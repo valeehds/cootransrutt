@@ -2,7 +2,7 @@
 @section('content')
 <div class="card shadow">
     <div class="card-body">
-        <form action="{{ route('vehiculos.store') }}" method="POST" class="needs-validation" novalidate>
+        <form action="{{ route('vehiculo.store') }}" method="POST" class="needs-validation" novalidate>
             @csrf
             <div class="form-group">
                 <label for="idUsuario">Persona</label>

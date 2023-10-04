@@ -33,7 +33,7 @@ class DespachosController extends Controller
         $rut = $rutas[0]->idRuta;
         $recorridos = Recorridos::orderBy('numPasajeros', 'ASC')->where('idRuta', '=', $rut)->get();
         
-        return view('despachos.rutas', ['rutas' => $rutas, 'recorridos' => $recorridos]);
+        return view('despachos/rutas', ['rutas' => $rutas, 'recorridos' => $recorridos]);
     }
     public function create()
     {

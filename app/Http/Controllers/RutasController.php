@@ -1,17 +1,27 @@
 <?php
 
-    namespace App\Http\Controllers;
-    use App\Models\Despachos;
-    use App\Models\Rutas;
-    use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+use App\Models\Rutas; 
+use App\Models\Despachos;
+use App\Models\Recorridos;
+use Illuminate\Http\Request;
     
     class RutasController extends Controller
     {
         public function index()
         {
-            $rutas= Rutas::orderBy('idRuta','ASC')->get();
-           
+            $rutas = Rutas::orderBy('idRuta', 'ASC')->get();
+            return view('rutas.index', ['rutas' => $rutas]);
         }
+        /**Recorridos */
+        public function recorridos($id)
+{
+    $recorridos = Recorridos::orderBy('numPasajeros', 'ASC')->where('idRuta', '=', $id)->get();
+
+    return view('recorridos.visualizar', ['recorridos' => $recorridos]);
+}
+
+        
         /**
          * Show the form for creating a new resource.
          */
@@ -33,6 +43,7 @@
                 'idDespacho' => $idDespacho,
                 'tiempoEstimado' => $request->input('tiempoEstimado'),
                 'valorTiquete' => $request->input('valorTiquete'),
+                
             ]);
         
             return redirect()->route('despacho.rutas', ['id' => $idDespacho])->with('success', 'Ruta creada exitosamente');
