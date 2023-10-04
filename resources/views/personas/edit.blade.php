@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{ route('personas.update', $personas->id) }}" method="POST">
+        <form action="{{ route('persona.update', $personas->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-row">

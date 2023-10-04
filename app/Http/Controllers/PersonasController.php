@@ -59,13 +59,13 @@ class PersonasController extends Controller
             'email' => $request->input('email')
         ]);
         
-        return redirect()->route('personas.index');
+        return redirect()->route('persona.index');
     }
 
     public function destroy($id)
     {
         $personas = User::findOrFail($id);
         $personas->delete();
-        return redirect()->route('personas.index');
+        return redirect()->route('persona.index');
     }
 }

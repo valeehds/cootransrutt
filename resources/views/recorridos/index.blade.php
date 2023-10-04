@@ -33,8 +33,8 @@
                     <td>{{$fila->fechaHoraInicio}}</td>
                     <td>{{$fila->fechaHoraFin}}</td>                  
                     <td class="text-center">
-                        <a href="{{ route('recorridos.edit', $fila->idRecorrido) }}" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="{{ route('recorridos.destroy', $fila->idRecorrido) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
+                        <a href="{{ route('recorrido.edit', $fila->idRecorrido) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ route('recorrido.destroy', $fila->idRecorrido) }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar el registro?')">Eliminar</a>
                     </td>
                 </tr>
                 @empty

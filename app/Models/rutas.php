@@ -10,4 +10,5 @@ class rutas extends Model
     use HasFactory;
     protected $fillable=['idRuta','idDespacho','tiempoEstimado','valorTiquete'];
     protected $primaryKey='idRuta';
+    
 }

@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\vehiculos;
-use App\Models\rotaciones;
-use App\Models\user;
 
 use Illuminate\Http\Request;
+use App\Models\Rotaciones;
 
 class RotacionesController extends Controller
 {
@@ -14,27 +12,19 @@ class RotacionesController extends Controller
      */
     public function index()
     {
-        $rotaciones = Rotaciones::orderBy('fechaAsignacion','ASC')->get();
-        return view('rotaciones.index',['rotaciones'=>$rotaciones]);
+        $rotaciones = Rotaciones::orderBy('fechaAsignacion', 'ASC')->get();
+        return view('rotaciones.index', ['rotaciones' => $rotaciones]);
     }
-    public function persona($id)
-    {
-        $pesonas = User::orderBy('name','ASC')->where('idRotacion','=',$id)->get();
-        $vehiculos = Vehiculos::orderBy('idVehiculo','ASC')->where('idRotacion','=',$id)->get();
-        return view('rotaciones.personas', ['personas' => $personas, 'vehiculos' => $vehiculos]);
-    }
-    
-
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $personas = User::orderBy('name', 'ASC')->get();
-        $vehiculos = Vehiculos::orderBy('idVehiculo', 'ASC')->get();
-        return view('rotaciones.create', ['vehiculos' => $vehiculos,'personas'=>$personas,]);
+        
+        return view('rotaciones.create');
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -46,15 +36,8 @@ class RotacionesController extends Controller
             'fechaAsignacion' => $request->input('fechaAsignacion'),
             'fechaFinasignacion' => $request->input('fechaFinasignacion'),
         ]);
-        return redirect()->route('rotaciones.index')->with('success', 'Rotación creada exitosamente');
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(rotaciones $rotaciones)
-    {
-        //
+        return redirect()->route('rotacion.index')->with('success', 'Rotación creada exitosamente');
     }
 
     /**
@@ -62,8 +45,8 @@ class RotacionesController extends Controller
      */
     public function edit($id)
     {
-        $rotacion = Rotaciones::findOrFail($id);
-        return view('rotaciones.edit', ['rotacion' => $rotacion]);
+        $rotaciones = Rotaciones::findOrFail($id);
+        return view('rotaciones.edit', ['rotaciones' => $rotaciones]);
     }
 
     /**
@@ -71,15 +54,16 @@ class RotacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rotacion = Rotaciones::findOrFail($id);
-        $rotacion->update([
+        $rotaciones = Rotaciones::findOrFail($id);
+
+        $rotaciones->update([
             'idVehiculo' => $request->input('idVehiculo'),
             'idUsuario' => $request->input('idUsuario'),
             'fechaAsignacion' => $request->input('fechaAsignacion'),
             'fechaFinasignacion' => $request->input('fechaFinasignacion'),
         ]);
 
-        return redirect()->route('rotaciones.index')->with('success', 'Rotación actualizada exitosamente');
+        return redirect()->route('rotacion.index')->with('success', 'Rotación actualizada exitosamente');
     }
 
     /**
@@ -90,6 +74,7 @@ class RotacionesController extends Controller
         $rotacion = Rotaciones::findOrFail($id);
         $rotacion->delete();
 
-        return redirect()->route('rotaciones.index')->with('success', 'Rotación eliminada exitosamente');
+        return redirect()->route('rotacion.index')->with('success', 'Rotación eliminada exitosamente');
     }
 }
+

@@ -11,6 +11,7 @@
     <div class="card-body">
         <form action="{{ route('recorrido.store') }}" method="POST" class="needs-validation" novalidate>
             @csrf
+            <input type="hidden" name="idDespacho" value="$rutas->idDespacho">
             <div class="form-group">
             <label for="idRuta">Ruta</label>
             <select class="form-control" name="idRuta" id="idRuta" required>
@@ -27,7 +28,7 @@
             <select class="form-control" name="idRotacion" id="idRotacion" required>
                 <option value="" disabled selected>Seleccione una rotación</option>
                 @foreach ($rotaciones as $rotacion)
-                    <option value="{{ $rotacion->idRotacion }}">{{ $rotacion->fechaAsignacion }} {{ $rotacion->fechaFinasignacion }}</option>
+                <option value="{{ $rotacion->idRotacion }}">{{ $rotacion->fechaAsignacion }}</option>
                 @endforeach
             </select>
             <div class="invalid-feedback">Por favor seleccione una rotación.</div>
@@ -39,15 +40,16 @@
                 <div class="invalid-feedback">Por favor ingrese el número de pasajeros.</div>
             </div>
             <div class="form-group">
-                <label for="fechaHoraInicio">Fecha/hora Inicio</label>
-                <input type="text" class="form-control" name="fechaHoraInicio" id="fechaHoraInicio" required>
-                <div class="invalid-feedback">Por favor ingrese la fecha de asignación.</div>
-            </div>
-            <div class="form-group">
-                <label for="fechaHoraFin">Fecha/hora fin</label>
-                <input type="text" class="form-control" name="fechaHoraFin" id="fechaHoraFin" required>
-                <div class="invalid-feedback">Por favor ingrese la fecha fin de asignación.</div>
-            </div>
+    <label for="fechaHoraInicio">Fecha/hora Inicio</label>
+    <input type="datetime-local" class="form-control" name="fechaHoraInicio" id="fechaHoraInicio" required>
+    <div class="invalid-feedback">Por favor ingrese la fecha y hora de inicio.</div>
+</div>
+<div class="form-group">
+    <label for="fechaHoraFin">Fecha/hora fin</label>
+    <input type="datetime-local" class="form-control" name="fechaHoraFin" id="fechaHoraFin" required>
+    <div class="invalid-feedback">Por favor ingrese la fecha y hora de fin.</div>
+</div>
+
             <button class="btn btn-primary mt-3" type="submit">Enviar</button>
         </form>
     </div>
