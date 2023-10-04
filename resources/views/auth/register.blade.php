@@ -6,13 +6,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="http://localhost/cootransrut/public/img/brand/logocootranascol.jpeg" rel="icon" type="image/png">
-      <!-- Icons -->
-  <link href=" {{ asset('js/plugins/nucleo/css/nucleo.css')}} " rel="stylesheet" />
-  <link href=" {{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}} " rel="stylesheet" />
-  <!-- CSS Files -->
-  <link href=" {{ asset('css/argon-dashboard.css?v=1.1.2')}} " rel="stylesheet" />
+
+    <link href="{{ asset('js/plugins/nucleo/css/nucleo.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
     <style>
-        /* Estilos CSS personalizados aquí */
         body {
             display: flex;
             flex-direction: row;
@@ -69,7 +67,6 @@
             font-size: 16px;
             cursor: pointer;
             height: 50px;
-            
         }
 
         .login-form button:hover {
@@ -85,8 +82,8 @@
             width: 100%;
             padding: 10px;
             border: none;
-            border-bottom: 1px solid #ccc; /* Línea de borde inferior */
-            border-radius: 0; /* Remover el radio de borde */
+            border-bottom: 1px solid #ccc; 
+            border-radius: 0;
             outline: none;
         }
         .register a{
@@ -103,67 +100,106 @@
         .restablecimiento a{
         }
         img {
-          height: 20%;
-          width: 20%
+          height: 15%;
+          width: 15%
         }
 
-        /* Estilo para colocar nombre y apellido en la misma fila */
         .name-and-lastname {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px; /* Espacio entre los campos de nombre y apellido */
+            margin-bottom: 15px; 
         }
 
         .name-and-lastname input {
             width: 48%; 
         }
-
-        /* Estilo para los campos de contraseña y confirmación de contraseña */
+        
         .password-fields {
             display: flex;
             justify-content: space-between;
         }
-
-        /* Estilo para los campos de contraseña y confirmación de contraseña */
         .password-fields input {
             width: 48%; 
         }
+        .input-group-text {
+          font-size:14px;
+        }
+        .form-group{
+          font-size:13px;
+        }
 
+        .form-control:focus {
+            border-color: none;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
     <div id="map-container">
-        <!-- Aquí puedes agregar el mapa de Google Maps -->
-        <!-- Por ejemplo: -->
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.2881769278138!2d-73.36409022631605!3d5.524191033971437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7dd053b09533%3A0x579688d814c54a12!2sCootranscol%20Tunja!5e0!3m2!1ses!2sco!4v1693700944795!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div id="login-container">
 
         <div class="login-form">
         <div class="text-center mb-4">
-            <!-- Cabecera con el logotipo de la empresa -->
             <h1>COOTRANSRUT
               <img src="http://localhost/cootransrut/public/img/brand/logocootranascol.jpeg" alt="Logo de la empresa" width="200">
             </h1>
         </div>
+
         <form role="form" method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="form-group">
-                <div class="input-group input-group-alternative mb-3">
-                  <div class="input-group-prepend">
+
+                <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <select id="rol" name="rol" class="form-control" value="{{ old('rol') }}" required autofocus>
+                              <option value="">Seleccione un cargo</option>
+                              <option value="Gerencia">Gerencia</option>
+                              <option value="Secretaria">Secretaria</option>
+                              <option value="Tesoreria">Tesoreria</option>
+                              <option value="Talento humano">Talento humano</option>
+                              <option value="Propietarios">Propietarios</option>
+                              <option value="Conductores">Conductores</option>
+                          </select>
+                      </div>
                   </div>
-                    <select id="rol" name="rol" class="form-control" value="{{ old('rol') }}" required autofocus>
-                        <option value="">Selecciona tu rol</option>
-                        <option value="Gerencia">Gerencia</option>
-                        <option value="Secretaria">Secretaria</option>
-                        <option value="Tesoreria">Tesoreria</option>
-                        <option value="Talento humano">Talento humano</option>
-                        <option value="Propietarios">Propietarios</option>
-                        <option value="Conductores">Conductores</option>
-                    </select>
-                </div>
+                  <div class="col-md-6">
+                      <div class="form-group" id="licencia-container" style="display: none;">
+                          <input class="form-control" placeholder="Licencia" type="text" name="numLicencia" id="numLicencia">
+                      </div>
+                  </div>
               </div>
-              
+
+
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <select id="tipoDoc" name="tipoDoc" class="form-control" autofocus required>
+                              <option value="">T.D.</option>
+                              <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                              <option value="Cédula de extranjería">Cédula de extranjería</option>
+                              <option value="Pasaporte">Pasaporte</option>
+                              <option value="Número de identificación tributaria">Número de identificación tributaria</option>
+                          </select>
+                      </div>
+                      <div class="col-md-6">
+                          <input type="text" name="documento" id="documento" class="form-control" placeholder="Documento" required>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+              <label for="fechaNacimiento" class="text-muted">Fecha de Nacimiento</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                    </div>
+                    <label for="fechaNacimiento" class="sr-only">Fecha de Nacimiento</label>
+                    <input type="date" name="fechaNacimiento" id="fechaNacimiento" class="form-control" max="{{ \Carbon\Carbon::now()->subYears(18)->format('Y-m-d') }}" required>
+                </div>
+            </div>
+
               <div class="form-group name-and-lastname">
                 <div class="input-group-alternative">
                   <input class="form-control" placeholder="Nombre" type="text"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -192,10 +228,26 @@
                 <button type="submit" class="btn btn-danger btn-lg btn-block my-4">Registrarse</button>
               </div>
             </form>
-            <div class=""> 
-                <a class="register" href="{{ route('login') }}">Iniciar sesión</a>
-            </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rolSelect = document.getElementById('rol');
+            const licenciaContainer = document.getElementById('licencia-container');
+
+            rolSelect.addEventListener('change', function() {
+                if (this.value === 'Conductores') {
+                    licenciaContainer.style.display = 'block';
+                } else {
+                    licenciaContainer.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -26,16 +26,9 @@ class User extends Authenticatable
         'estado',
         'fechaAfiliación',
         'fechaNacimiento',
-        'numLicencia'
-    ];
-
-    protected $fillableByRole = [
-        'Secretaria' => ['tipoDoc', 'documento', 'fechaNacimiento'],
-        'Tesorero' => ['tipoDoc', 'documento', 'fechaNacimiento'],
-        'Gerencia' => ['tipoDoc', 'documento', 'fechaNacimiento'],
-        'Talento Humano' => ['tipoDoc', 'documento', 'fechaNacimiento'],
-        'Propietario' => ['tipoDoc', 'documento', 'fechaNacimiento'],
-        'Conductor' => ['tipoDoc', 'documento', 'fechaNacimiento', 'numLicencia'],
+        'numLicencia',
+        'tipoDoc',
+        'documento'
     ];
 
     /**

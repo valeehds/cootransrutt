@@ -115,14 +115,11 @@
 </head>
 <body>
 <div id="map-container">
-        <!-- Aquí puedes agregar el mapa de Google Maps -->
-        <!-- Por ejemplo: -->
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.2881769278138!2d-73.36409022631605!3d5.524191033971437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7dd053b09533%3A0x579688d814c54a12!2sCootranscol%20Tunja!5e0!3m2!1ses!2sco!4v1693700944795!5m2!1ses!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div id="login-container">
         <div class="login-form">
             <div class="text-center mb-4">
-                <!-- Cabecera con el logotipo de la empresa -->
                 <h1>COOTRANSRUT</h1>
                 <img src="http://localhost/cootransrut/public/img/brand/logocootranascol.jpeg" alt="Logo de la empresa" width="200">
             </div>
@@ -149,7 +146,6 @@
             <div class=""> 
                 <a class="restablecimiento" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a> 
                 <br>
-                <a class="register" href="{{ route('register') }}">Crear nueva cuenta</a>
             </div>
         </div>
     </div>

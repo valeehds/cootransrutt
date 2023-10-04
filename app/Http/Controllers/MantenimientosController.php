@@ -17,9 +17,14 @@ class MantenimientosController extends Controller
 
     public function index()
     {
-        $mantenimientos = Mantenimientos::orderBy('fechaMantenimiento', 'DESC')->get();
-        return view('conductores.index', ['mantenimientos' => $mantenimientos]);
+        $mantenimientos = Mantenimientos::select('mantenimientos.*', 'vehiculos.numPlaca')
+            ->leftJoin('vehiculos', 'mantenimientos.idVehiculo', '=', 'vehiculos.idVehiculo')
+            ->orderBy('fechaMantenimiento', 'DESC')
+            ->get();
+
+        return view('conductores.index', compact('mantenimientos'));
     }
+
 
     public function create()
     {
@@ -28,30 +33,32 @@ class MantenimientosController extends Controller
     }
 
     public function store(Request $request)
-     {
-        $request->validate([
-            'fotoFactura' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-    
-        Mantenimientos::create([
-            'idMantenimiento' => $request['idMantenimiento'],
-            'idVehiculo' => $request['idv'],
-            'fechaMantenimiento' => $request['fechaMantenimiento'],
-            'observaciones' => $request['observaciones'],
-            'valorManoobra' => $request['valorManoobra'],
-            'valorPiezas' => $request['valorPiezas'],
-            'valorTotal' => $request['valorTotal'],
-        ]);
+    {
+/*         $fechaActual = now()->toDateString();
 
-        if ($request->hasFile('fotoFactura')) {
-            $imagePath = $request->file('fotoFactura')->store('mantenimientos');
-            $mantenimiento->update([
-                'fotoFactura' => $imagePath,
-            ]);
-        }
+        $request->validate([
+            'idv' => 'required',
+            'fechaMantenimiento' => "required|date|after:$fechaActual",
+            'observaciones' => 'required',
+            'valorManoobra' => 'required',  
+            'valorPiezas' => 'required',
+            'valorTotal' => 'required',
+            'fotoFactura' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]); */
+
+        $mantenimiento = new Mantenimientos;
+        $mantenimiento->idVehiculo = $request->input('idv');
+        $mantenimiento->fechaMantenimiento = $request->input('fechaMantenimiento');
+        $mantenimiento->observaciones = $request->input('observaciones');
+        $mantenimiento->valorManoobra = $request->input('valorManoobra');
+        $mantenimiento->valorPiezas = $request->input('valorPiezas');
+        $mantenimiento->valorTotal = $request->input('valorTotal');
+        $mantenimiento->fotoFactura = $request->input('fotoFactura');
+        $mantenimiento->save();
 
         return redirect()->route('mantenimiento.index');
     }
+
 
     public function edit($id)
     {
@@ -63,6 +70,19 @@ class MantenimientosController extends Controller
     public function update(Request $request, $id)
     {
         $mantenimiento = Mantenimientos::findOrFail($id);
+
+        $fechaActual = now()->toDateString();
+
+        $request->validate([
+            'idv' => 'required',
+            'fechaMantenimiento' => "required|date|after:$fechaActual",
+            'observaciones' => 'required',
+            'valorManoobra' => 'required',
+            'valorPiezas' => 'required',
+            'valorTotal' => 'required',
+            'fotoFactura' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
         $mantenimiento->update([
            
             'idVehiculo' => $request['idv'],
@@ -104,13 +124,4 @@ class MantenimientosController extends Controller
             return abort(404); // Archivo no encontrado
         }
     }
-    
-
 }
-
-
-
-
-
-    
-
