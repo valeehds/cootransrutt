@@ -20,7 +20,7 @@
                     <option value=""></option>
                     @foreach ($vehiculos as $veh)
                         <option value="{{ $veh->idVehiculo }}" {{ $veh->idVehiculo == $mantenimiento->idVehiculo ? 'selected' : '' }}>
-                            {{ $veh->idVehiculo }}
+                            {{ $veh->numPlaca }}
                         </option>
                     @endforeach
                 </select>

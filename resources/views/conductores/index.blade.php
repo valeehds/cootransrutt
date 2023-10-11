@@ -15,7 +15,6 @@
         <table class="table table-striped align-items-center">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Código</th>
                     <th scope="col">Vehículo</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Observaciones</th>
@@ -29,8 +28,7 @@
             <tbody>
                 @forelse($mantenimientos as $fila)
                 <tr>
-                    <td>{{$fila->idMantenimiento}}</td>
-                    <td>{{$fila->idVehiculo}}</td>
+                    <td>{{$fila->numPlaca}}</td>
                     <td>{{$fila->fechaMantenimiento}}</td>
                     <td>{{$fila->observaciones}}</td>
                     <td>{{$fila->valorManoobra}}</td>

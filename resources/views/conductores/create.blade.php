@@ -16,7 +16,7 @@
                 <select class="form-control" name="idv" id="idv" required>
                     <option value="" disabled selected>Seleccione un vehículo</option>
                     @foreach ($vehiculos as $veh)
-                        <option value="{{$veh->idVehiculo}}">{{$veh->idVehiculo}}</option>
+                        <option value="{{$veh->idVehiculo}}">{{$veh->numPlaca}}</option>
                     @endforeach
                 </select>
                 <div class="invalid-feedback">Por favor seleccione un vehículo.</div>
@@ -63,7 +63,6 @@
                     <button class="btn btn-block btn-success mt-3" type="submit">Subir Comprobante</button>
                 </form>
             </div>
-            <button class="btn btn-block btn-info" type="submit">Enviar</button>
         </form>
     </div>
     <div class="card-footer">
