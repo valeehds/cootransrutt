@@ -37,7 +37,6 @@
                 <div class="invalid-feedback">Por favor cargue la imagen de la ruta.</div>
             </div>
             
-            <!-- Add a field for the Google Maps link -->
             <div class="form-group">
                 <label for="google_maps_link">Google Maps Link</label>
                 <input type="text" class="form-control" name="google_maps_link" id="google_maps_link" required>

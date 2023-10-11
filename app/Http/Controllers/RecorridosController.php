@@ -33,7 +33,9 @@ class RecorridosController extends Controller
     }
 
     public function store(Request $request)
+
     {
+        
         $idDespacho = $request->input('idDespacho');
         
         // Aquí puedes agregar validación de datos si es necesario

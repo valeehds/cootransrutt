@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Rotaciones;
+use App\Models\User;
+use App\Models\Vehiculos;
 
 class RotacionesController extends Controller
 {
@@ -21,15 +23,26 @@ class RotacionesController extends Controller
      */
     public function create()
     {
-        
-        return view('rotaciones.create');
+        $personas = User::all(); 
+        $vehiculos = Vehiculos::all(); 
+
+        return view('rotaciones.create', ['personas' => $personas, 'vehiculos' => $vehiculos]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
+
     {
+        $request->validate([
+            'fechaAsignacion'=>'required|date|after_or_equal:' . now()->toDateString(),
+            'fechaFinasignacion'=>'required|date|after_or_equal:' . now()->toDateString(),
+        ], [
+            'fecha.after_or_equal'=>'La fecha deben ser igual o posterior a la fecha actual',
+        ]
+    
+    );
         Rotaciones::create([
             'idVehiculo' => $request->input('idVehiculo'),
             'idUsuario' => $request->input('idUsuario'),
@@ -46,8 +59,12 @@ class RotacionesController extends Controller
     public function edit($id)
     {
         $rotaciones = Rotaciones::findOrFail($id);
-        return view('rotaciones.edit', ['rotaciones' => $rotaciones]);
+        $personas = User::all(); 
+        $vehiculos = Vehiculos::all(); 
+    
+        return view('rotaciones.edit', ['rotaciones' => $rotaciones, 'personas' => $personas, 'vehiculos' => $vehiculos]);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -77,4 +94,3 @@ class RotacionesController extends Controller
         return redirect()->route('rotacion.index')->with('success', 'Rotación eliminada exitosamente');
     }
 }
-

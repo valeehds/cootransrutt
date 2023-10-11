@@ -43,6 +43,7 @@
     <label for="fechaHoraInicio">Fecha/hora Inicio</label>
     <input type="datetime-local" class="form-control" name="fechaHoraInicio" id="fechaHoraInicio" required>
     <div class="invalid-feedback">Por favor ingrese la fecha y hora de inicio.</div>
+    
 </div>
 <div class="form-group">
     <label for="fechaHoraFin">Fecha/hora fin</label>

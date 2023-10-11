@@ -32,6 +32,26 @@
                 <label for="valorTiquete">Valor tiquete</label>
                 <input type="text" name="valorTiquete" id="valorTiquete" class="form-control" value="{{ $rutas->valorTiquete}}">
             </div>
+            <div class="form-group">
+    <label for="Imagen">Imagen</label>
+    <input type="file" class="form-control" name="Imagen" id="Imagen">
+    @if ($errors->has('Imagen'))
+        <div class="invalid-feedback">{{ $errors->first('Imagen') }}</div>
+    @else
+        <div class="invalid-feedback">Por favor cargue la imagen de la ruta.</div>
+    @endif
+</div>
+
+<div class="form-group">
+    <label for="google_maps_link">Google Maps Link</label>
+    <input type="text" class="form-control" name="google_maps_link" id="google_maps_link" value="{{ old('google_maps_link', $rutas->google_maps_link) }}">
+    @if ($errors->has('google_maps_link'))
+        <div class="invalid-feedback">{{ $errors->first('google_maps_link') }}</div>
+    @else
+        <div class="invalid-feedback">Por favor ingrese el enlace de Google Maps.</div>
+    @endif
+</div>
+            
 
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>

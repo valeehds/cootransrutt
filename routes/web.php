@@ -29,12 +29,11 @@ route::get('personas/create',[App\Http\Controllers\PersonasController::class, 'c
 route::post('personas/store',[App\Http\Controllers\PersonasController::class, 'store'])->name('persona.store');
 route::get('personas/edit/{id}',[App\Http\Controllers\PersonasController::class, 'edit'])->name('persona.edit');
 Route::put('personas/update/{id}', [App\Http\Controllers\PersonasController::class, 'update'])->name('persona.update');
-<<<<<<< HEAD
+
 Route::middleware(['auth'])->group(function () {
     Route::put('/perfil/completar', [App\Http\Controllers\Auth\RegisterController::class, 'update'])->name('formulario2.conductores');
 });
-=======
->>>>>>> 8fe58c7ea46eb09029d9a8ff19cf835d3e17d86e
+
 route::get('personas/destroy{id}',[App\Http\Controllers\PersonasController::class, 'destroy'])->name('persona.destroy');
 
 //2.NÓMINAS
@@ -66,7 +65,8 @@ route::get('rutas/update/{id}',[App\Http\Controllers\RutasController::class, 'up
 route::get('rutas/destroy{id}',[App\Http\Controllers\RutasController::class, 'destroy'])->name('ruta.destroy');
 Route::get('/rutas/{id}', [App\Http\Controllers\DespachosController::class, 'rutas'])->name('despacho.rutas');
 Route::get('/vis/{id}', [App\Http\Controllers\RutasController::class, 'recorridos'])->name('recorrido.vis');
-Route::post('/rutas/update-google-maps-link/{id}', [RutasController::class, 'updateGoogleMapsLink'])->name('rutas.update-google-maps-link');
+Route::get('/rutas/update-google-maps-link/{id}', [App\Http\Controllers\RutasController::class, 'updateGoogleMapsLink'])->name('rutas.update-google-maps-link');
+
 
 //6. RECORRIDOS
 Route::get('recorridos/create', [App\Http\Controllers\RecorridosController::class, 'create'])->name('recorrido.create');

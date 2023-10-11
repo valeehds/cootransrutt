@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class rutas extends Model
 {
     use HasFactory;
-    protected $fillable=['idRuta','idDespacho','tiempoEstimado','valorTiquete','Imagen'];
+    protected $fillable=['idRuta','idDespacho','tiempoEstimado','valorTiquete','Imagen','google_maps_link'];
     protected $primaryKey='idRuta';
     
 }
