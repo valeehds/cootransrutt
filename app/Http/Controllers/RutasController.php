@@ -37,17 +37,29 @@ use Illuminate\Http\Request;
          */
         public function store(Request $request)
         {
-            $idDespacho = $request->input('idDespacho'); // Obtén el idDespacho de la solicitud
+            $rutas = new Rutas();
         
-            Rutas::create([
-                'idDespacho' => $idDespacho,
-                'tiempoEstimado' => $request->input('tiempoEstimado'),
-                'valorTiquete' => $request->input('valorTiquete'),
-                
-            ]);
+            $rutas->idDespacho = $request->input('idDespacho');
+            $rutas->tiempoEstimado = $request->input('tiempoEstimado');
+            $rutas->valorTiquete = $request->input('valorTiquete');
         
-            return redirect()->route('despacho.rutas', ['id' => $idDespacho])->with('success', 'Ruta creada exitosamente');
+            if ($request->hasFile('Imagen')) {
+                $file = $request->file('Imagen');
+        
+                // Valida que el archivo sea una imagen
+                if ($file->isValid() && strpos($file->getMimeType(), 'image/') === 0) {
+                    $fileName = $file->store('public/imagenrutas');
+                    $rutas->Imagen = basename($fileName);
+                } else {
+                    return redirect()->back()->with('error', 'El archivo seleccionado no es una imagen válida.');
+                }
+            }
+        
+            $rutas->save();
+        
+            return redirect()->route('despacho.rutas', ['id' => $request->input('idDespacho')])->with('success', 'Ruta creada exitosamente');
         }
+        
         
     
         /**
@@ -61,6 +73,18 @@ use Illuminate\Http\Request;
             return view('rutas.edit', ['rutas' => $rutas, 'despachos' => $despachos]);
         }
         
+        public function updateGoogleMapsLink(Request $request, $id)
+        {
+            $ruta = Rutas::findOrFail($id); // Find the route by ID
+    
+            // Update the Google Maps link based on the input from the form
+            $ruta->google_maps_link = $request->input('google_maps_link');
+            $ruta->save();
+    
+            return redirect()->route('rutas.index')->with('success', 'Google Maps link updated successfully.');
+        }
+    
+        
         /**
          * Update the specified resource in storage.
          */
@@ -71,6 +95,8 @@ use Illuminate\Http\Request;
                 'idDespacho' => $request->input('idDespacho'),
                 'tiempoEstimado' => $request->input('tiempoEstimado'),
                 'valorTiquete' => $request->input('valorTiquete'),
+                'imagen' => $request->input('imagen'),
+                
             ]);
         
             return redirect()->route('despacho.rutas', ['id' => $ruta->idDespacho])->with('success', 'Ruta actualizada exitosamente');

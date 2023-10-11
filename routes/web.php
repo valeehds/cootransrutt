@@ -58,6 +58,8 @@ route::get('rutas/update/{id}',[App\Http\Controllers\RutasController::class, 'up
 route::get('rutas/destroy{id}',[App\Http\Controllers\RutasController::class, 'destroy'])->name('ruta.destroy');
 Route::get('/rutas/{id}', [App\Http\Controllers\DespachosController::class, 'rutas'])->name('despacho.rutas');
 Route::get('/vis/{id}', [App\Http\Controllers\RutasController::class, 'recorridos'])->name('recorrido.vis');
+Route::post('/rutas/update-google-maps-link/{id}', [RutasController::class, 'updateGoogleMapsLink'])->name('rutas.update-google-maps-link');
+
 //6. RECORRIDOS
 Route::get('recorridos/create', [App\Http\Controllers\RecorridosController::class, 'create'])->name('recorrido.create');
 route::post('recorridos/store',[App\Http\Controllers\RecorridosController::class, 'store'])->name('recorrido.store');

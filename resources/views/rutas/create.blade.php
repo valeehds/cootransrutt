@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{ route('ruta.store') }}" method="POST" class="needs-validation" novalidate>
+        <form action="{{ route('ruta.store') }}" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="idDespacho">Despacho</label>
@@ -24,13 +24,26 @@
             <div class="form-group">
                 <label for="tiempoEstimado">Tiempo estimado</label>
                 <input type="text" class="form-control" name="tiempoEstimado" id="tiempoEstimado" required>
-                <div class="invalid-feedback">Por favor ingrese el valor estimado</div>
+                <div class="invalid-feedback">Por favor ingrese el valor estimado.</div>
             </div>
             <div class="form-group">
                 <label for="valorTiquete">Valor tiquete</label>
                 <input type="text" class="form-control" name="valorTiquete" id="valorTiquete" required>
                 <div class="invalid-feedback">Por favor ingrese el valor del tiquete.</div>
             </div>
+            <div class="form-group">
+                <label for="Imagen">Imagen</label>
+                <input type="file" class="form-control" name="Imagen" id="Imagen" required>
+                <div class="invalid-feedback">Por favor cargue la imagen de la ruta.</div>
+            </div>
+            
+            <!-- Add a field for the Google Maps link -->
+            <div class="form-group">
+                <label for="google_maps_link">Google Maps Link</label>
+                <input type="text" class="form-control" name="google_maps_link" id="google_maps_link" required>
+                <div class="invalid-feedback">Por favor ingrese el enlace de Google Maps.</div>
+            </div>
+
             <button class="btn btn-primary mt-3" type="submit">Enviar</button>
         </form>
     </div>
