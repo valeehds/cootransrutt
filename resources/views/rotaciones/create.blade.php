@@ -12,12 +12,22 @@
     <div class="card-body">
         <form action="{{ route('rotacion.store') }}" method="POST" class="needs-validation" novalidate>
             @csrf
+<<<<<<< HEAD
             <div class="form-group">
+=======
+        <div class="form-group">
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
                 <label for="idUsuario">Persona</label>
                 <select class="form-control" name="idUsuario" id="idUsuario" required>
                     <option value="" disabled selected>Seleccione una persona</option>
                     @foreach ($personas as $per)
+<<<<<<< HEAD
                         <option value="{{ $per->id }}">{{ $per->name }}{{ $per->apellido }}</option>
+=======
+                        @if ($per->rol == 'Conductores')
+                            <option value="{{ $per->id }}">{{ $per->name }} {{ $per->apellido }}</option>
+                        @endif
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
                     @endforeach
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una Persona.</div>

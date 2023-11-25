@@ -4,7 +4,11 @@
       font-weight: normal;
     }
   </style>
+<<<<<<< HEAD
   <h6 font-family: Arial, sans-serif; class="navbar-heading text-muted">Panel Usuarios</h6>
+=======
+  <h6 font-family: Arial, sans-serif; class="navbar-heading text-muted">Menù</h6>
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
 <ul class="navbar-nav">
     <li class="nav-item">
     <a class="nav-link" href="{{ route('mantenimiento.index') }}">
@@ -49,7 +53,11 @@
   <!-- Divider -->
   <hr class="my-3">
   <!-- Heading -->
+<<<<<<< HEAD
   <h6 class="navbar-heading text-muted">Panel exámenes</h6>
+=======
+ 
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
   <!-- Navigation -->
  
     

@@ -15,7 +15,11 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 Route::get('/', function () {
+<<<<<<< HEAD
     return view('cootransrut');
+=======
+    return view('auth.login');
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
 });
 
 Auth::routes();

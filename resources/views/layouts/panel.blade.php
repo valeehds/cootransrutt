@@ -5,7 +5,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<<<<<<< HEAD
   <title>
+=======
+  <title>+
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
     {{ config('app.name')}}
   </title>
   <!-- Favicon -->
@@ -47,6 +51,13 @@
         <li class="nav-item dropdown">
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
+<<<<<<< HEAD
+=======
+              <span class="avatar avatar-sm rounded-circle">
+                <img alt="Image placeholder" src=" {{ asset('img/theme/team-1-800x800.jpg')}}
+">
+              </span>
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
             </div>
           </a>
           @include('includes.panel.userOptions')

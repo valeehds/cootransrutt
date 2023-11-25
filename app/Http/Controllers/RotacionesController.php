@@ -39,7 +39,11 @@ class RotacionesController extends Controller
             'fechaAsignacion'=>'required|date|after_or_equal:' . now()->toDateString(),
             'fechaFinasignacion'=>'required|date|after_or_equal:' . now()->toDateString(),
         ], [
+<<<<<<< HEAD
             'fecha.after_or_equal'=>'La fecha deben ser igual o posterior a la fecha actual',
+=======
+            'fecha.after_or_equal'=>'La fecha debe ser igual o posterior a la fecha actual',
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
         ]
     
     );
@@ -71,6 +75,17 @@ class RotacionesController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
+=======
+        $request->validate([
+            'fechaAsignacion'=>'required|date|after_or_equal:' . now()->toDateString(),
+            'fechaFinasignacion'=>'required|date|after_or_equal:' . now()->toDateString(),
+        ], [
+            'fecha.after_or_equal'=>'La fecha debe ser igual o posterior a la fecha actual',
+        ]
+    
+    );
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
         $rotaciones = Rotaciones::findOrFail($id);
 
         $rotaciones->update([

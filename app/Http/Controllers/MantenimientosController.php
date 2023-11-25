@@ -26,7 +26,6 @@ class MantenimientosController extends Controller
         return view('conductores.index', compact('mantenimientos'));
     }
 
-
     public function create()
     {
         $vehiculos = Vehiculos::orderBy('marca', 'ASC')->get();
@@ -56,7 +55,6 @@ class MantenimientosController extends Controller
 
         return redirect()->route('mantenimiento.index');
     }
-
 
     public function edit($id)
     {

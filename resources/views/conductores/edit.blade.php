@@ -13,7 +13,6 @@
         <form action="{{ route('mantenimiento.update', $mantenimiento->idMantenimiento) }}" method="PUT">
             @csrf
             @method('PUT')
-
             <div class="form-group">
                 <label for="idv">Vehículo</label>
                 <select class="form-control" name="idv" id="idv" required>

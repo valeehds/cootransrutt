@@ -7,6 +7,13 @@
       </div>
       <div class="col-xl-6">
         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+<<<<<<< HEAD
+=======
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">¿Quiénes somos?</a>
+          </li>
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
         </ul>
       </div>
     </div>

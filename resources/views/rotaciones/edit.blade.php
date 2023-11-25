@@ -14,6 +14,7 @@
     <form action="{{ route('rotacion.update', $rotaciones->idRotacion) }}" method="PUT">
             @csrf
             @method('PUT') 
+<<<<<<< HEAD
 
             <div class="form-group">
                 <label for="idUsuario">Persona</label>
@@ -22,6 +23,16 @@
                         <option value="{{ $per->id }}" {{ $rotaciones->idUsuario == $per->id ? 'selected' : '' }}>
                             {{ $per->name }} {{ $per->apellido }}
                         </option>
+=======
+        <div class="form-group">
+                <label for="idUsuario">Persona</label>
+                <select class="form-control" name="idUsuario" id="idUsuario" required>
+                    <option value="" disabled selected>Seleccione una persona</option>
+                    @foreach ($personas as $per)
+                        @if ($per->rol == 'Conductores')
+                            <option value="{{ $per->id }}">{{ $per->name }} {{ $per->apellido }}</option>
+                        @endif
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
                     @endforeach
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una Persona.</div>
@@ -40,6 +51,7 @@
             </div>
 
             <div class="form-group">
+<<<<<<< HEAD
                 <label for="fechaAsignacion">Inicio</label>
                 <input type="date" class="form-control" name="fechaAsignacion" id="fechaAsignacion" required value="{{ $rotaciones->fechaAsignacion }}">
                 <div class="invalid-feedback">Por favor ingrese la fecha de inicio de la rotación.</div>
@@ -49,6 +61,27 @@
                 <label for="fechaFinasignacion">Fin</label>
                 <input type="date" class="form-control" name="fechaFinasignacion" id="fechaFinasignacion" required value="{{ $rotaciones->fechaFinasignacion}}">
                 <div class="invalid-feedback">Por favor ingrese la fecha de fin de la rotación.</div>
+=======
+                <label for="fechaAsignacion">Fecha Inicio</label>
+                <input type="date" class="form-control" name="fechaAsignacion" id="fechaAsignacion" required value="{{ $rotaciones->fechaAsignacion }}">
+                <div class="invalid-feedback">Por favor ingrese la fecha de inicio de la rotación.</div>
+                @if($errors->has('fechaAsignacion'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('fechaAsignacion') }}
+                    </div>
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="fechaFinasignacion"> Fecha Fin</label>
+                <input type="date" class="form-control" name="fechaFinasignacion" id="fechaFinasignacion" required value="{{ $rotaciones->fechaFinasignacion}}">
+                <div class="invalid-feedback">Por favor ingrese la fecha de fin de la rotación.</div>
+                @if($errors->has('fechaFinasignacion'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('fechaFinasignacion') }}
+                    </div>
+                @endif
+>>>>>>> 040f034ec117eed931e3ed09cb21f35ec7582fc8
             </div>
 
            
