@@ -31,6 +31,14 @@ class NominasController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fechaInicio'=>'required|date|after_or_equal:' . now()->toDateString(),
+            'fechaFin'=>'required|date|after_or_equal:' . now()->toDateString(),
+        ], [
+            'fecha.after_or_equal'=>'La fecha debe ser igual o posterior a la fecha actual',
+        ]
+    
+    );
         Nominas::create([
             'idUsuario' => $request->input('idUsuario'),
             'horasTrabajadas' => $request->input('horasTrabajadas'),
@@ -61,6 +69,14 @@ class NominasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'fechaInicio'=>'required|date|after_or_equal:' . now()->toDateString(),
+            'fechaFin'=>'required|date|after_or_equal:' . now()->toDateString(),
+        ], [
+            'fecha.after_or_equal'=>'La fecha debe ser igual o posterior a la fecha actual',
+        ]
+    
+    );
         $nominas = Nominas::findOrFail($id);
         $nominas->update([
             'id' => $request->input('id'),

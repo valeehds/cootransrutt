@@ -11,7 +11,6 @@ class MantenimientosController extends Controller
 {
     public function info()
     {
-       
         return view('conductores.vistap');
     }
 
@@ -25,7 +24,6 @@ class MantenimientosController extends Controller
         return view('conductores.index', compact('mantenimientos'));
     }
 
-
     public function create()
     {
         $vehiculos = Vehiculos::orderBy('marca', 'ASC')->get();
@@ -34,31 +32,26 @@ class MantenimientosController extends Controller
 
     public function store(Request $request)
     {
-/*         $fechaActual = now()->toDateString();
-
         $request->validate([
-            'idv' => 'required',
-            'fechaMantenimiento' => "required|date|after:$fechaActual",
-            'observaciones' => 'required',
-            'valorManoobra' => 'required',  
-            'valorPiezas' => 'required',
-            'valorTotal' => 'required',
-            'fotoFactura' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]); */
+            'fechaMantenimiento'=>'required|date|after_or_equal:' . now()->toDateString(),
+        ], [
+            'fecha.after_or_equal'=>'La fecha debe ser igual o posterior a la fecha actual',
+        ]
+    
+    );
 
-        $mantenimiento = new Mantenimientos;
-        $mantenimiento->idVehiculo = $request->input('idv');
-        $mantenimiento->fechaMantenimiento = $request->input('fechaMantenimiento');
-        $mantenimiento->observaciones = $request->input('observaciones');
-        $mantenimiento->valorManoobra = $request->input('valorManoobra');
-        $mantenimiento->valorPiezas = $request->input('valorPiezas');
-        $mantenimiento->valorTotal = $request->input('valorTotal');
-        $mantenimiento->fotoFactura = $request->input('fotoFactura');
-        $mantenimiento->save();
+        Mantenimientos::create([
+            'idVehiculo' => $request->input('idv'),
+            'fechaMantenimiento' => $request->input('fechaMantenimiento'),
+            'observaciones' => $request->input('observaciones'),
+            'valorManoobra' => $request->input('valorManoobra'),
+            'valorPiezas' => $request->input('valorPiezas'),
+            'valorTotal' => $request->input('valorTotal'),
+            'fotoFactura' => $request->input('fotoFactura'),
+        ]);
 
         return redirect()->route('mantenimiento.index');
     }
-
 
     public function edit($id)
     {
@@ -69,22 +62,15 @@ class MantenimientosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $mantenimiento = Mantenimientos::findOrFail($id);
-
-        $fechaActual = now()->toDateString();
-
         $request->validate([
-            'idv' => 'required',
-            'fechaMantenimiento' => "required|date|after:$fechaActual",
-            'observaciones' => 'required',
-            'valorManoobra' => 'required',
-            'valorPiezas' => 'required',
-            'valorTotal' => 'required',
-            'fotoFactura' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
+            'fechaMantenimiento'=>'required|date|after_or_equal:' . now()->toDateString(),
+        ], [
+            'fecha.after_or_equal'=>'La fecha debe ser igual o posterior a la fecha actual',
+        ]
+    
+    );
+        $mantenimiento = Mantenimientos::findOrFail($id);
         $mantenimiento->update([
-           
             'idVehiculo' => $request['idv'],
             'fechaMantenimiento' => $request['fechaMantenimiento'],
             'observaciones' => $request['observaciones'],
@@ -108,17 +94,17 @@ class MantenimientosController extends Controller
     public function download($id)
     {
         $mantenimiento = Mantenimientos::findOrFail($id);
-    
+
         $imagePath = $mantenimiento->fotoFactura;
-    
+
         if (Storage::exists($imagePath)) {
             $file = Storage::get($imagePath);
             $contentType = Storage::mimeType($imagePath);
-    
+
             $headers = [
                 'Content-Type' => $contentType,
             ];
-    
+
             return response($file, 200)->withHeaders($headers);
         } else {
             return abort(404); // Archivo no encontrado

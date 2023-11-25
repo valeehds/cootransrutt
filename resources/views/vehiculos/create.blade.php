@@ -9,12 +9,13 @@
                 <select class="form-control" name="idUsuario" id="idUsuario" required>
                     <option value="" disabled selected>Seleccione una persona</option>
                     @foreach ($personas as $per)
-                        <option value="{{ $per->id }}">{{ $per->name }} {{ $per->apellido }}</option>
+                        @if ($per->rol == 'Conductores')
+                            <option value="{{ $per->id }}">{{ $per->name }} {{ $per->apellido }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <div class="invalid-feedback">Por favor seleccione una Persona.</div>
             </div>
-
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="marca">Marca</label>
